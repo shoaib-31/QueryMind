@@ -21,20 +21,20 @@ litellm.num_retries = 0  # Disable LiteLLM's retry - we'll handle it ourselves
 litellm.request_timeout = 30
 litellm.drop_params = True  # Drop unsupported params instead of erroring
 
-# Monkey patch sleep to cap retry delays at 3 seconds globally
+# Monkey patch sleep to cap retry delays at 30 seconds globally
 import time
 _original_sleep = time.sleep
 
 def _fast_sleep(seconds):
-    """Cap all sleep durations at 3 seconds"""
-    if seconds > 3:
-        _original_sleep(3)
+    """Cap all sleep durations at 30 seconds"""
+    if seconds > 30:
+        _original_sleep(30)
     else:
         _original_sleep(seconds)
 
 time.sleep = _fast_sleep
 
-logger.info("LLM Client configured: Custom proxy + Gemini fallback (3s retry delay)")
+logger.info("LLM Client configured: Custom proxy + Gemini fallback (30s retry delay)")
 
 # Import Gemini SDK for fallback (lazy import to avoid startup issues)
 _gemini_client = None
@@ -207,7 +207,7 @@ class LLMClient:
         endpoint = self.api_base if (use_custom_base and self.api_base) else "gemini-direct"
         logger.debug(f"LLM request to {endpoint} ({model}): {messages[-1]['content'][:100]}...")
         
-        # Manual retry logic with 3 second delay
+        # Manual retry logic with 30 second delay
         max_attempts = 3
         for attempt in range(max_attempts):
             try:
@@ -217,9 +217,9 @@ class LLMClient:
                 if attempt < max_attempts - 1:
                     error_msg = str(e)
                     if "429" in error_msg or "rate" in error_msg.lower():
-                        logger.warning(f"Rate limited on attempt {attempt + 1}/{max_attempts}, retrying in 3s...")
+                        logger.warning(f"Rate limited on attempt {attempt + 1}/{max_attempts}, retrying in 30s...")
                         import time
-                        time.sleep(3)
+                        time.sleep(30)
                         continue
                 # Last attempt or non-retryable error, raise it
                 raise
