@@ -75,6 +75,153 @@ graph TB
     style FusionFlow fill:#009688,stroke:#00695C,color:#fff
 ```
 
+## GA4 Agent Workflow
+
+```mermaid
+graph TB
+    Start([User Query]) --> ClassifyIntent[LLM: Classify Intent]
+    ClassifyIntent --> IsGA4{GA4 Query?}
+    
+    IsGA4 -->|No| End([Return to Orchestrator])
+    IsGA4 -->|Yes| CheckProperty{propertyId<br/>provided?}
+    
+    CheckProperty -->|No| ValidationError[Set validation_failed]
+    ValidationError --> End
+    
+    CheckProperty -->|Yes| GeneratePlan[LLM: Generate Query Plan]
+    GeneratePlan --> ParsePlan[Parse JSON Plan]
+    
+    ParsePlan --> CheckDeprecated{Contains<br/>deprecated<br/>metrics?}
+    CheckDeprecated -->|Yes| SubstituteMetrics[Auto-substitute:<br/>bounceRate→engagementRate<br/>avgSessionDuration→userEngagementDuration<br/>pageviews→screenPageViews]
+    CheckDeprecated -->|No| BuildRequest
+    SubstituteMetrics --> AddSubstitutionNote[Add metric_substitutions to plan]
+    AddSubstitutionNote --> BuildRequest[Build GA4 API Request]
+    
+    BuildRequest --> CallGA4[Call GA4 Data API]
+    CallGA4 --> CheckResponse{Response<br/>OK?}
+    
+    CheckResponse -->|Error| HandleError[Log Error & Return Empty]
+    CheckResponse -->|Success| ParseResponse[Parse API Response]
+    
+    ParseResponse --> FlattenData[Flatten dimensions + metrics]
+    FlattenData --> GenerateAnswer[LLM: Generate Answer]
+    
+    GenerateAnswer --> FormatDates[Format dates as dd-mm-yyyy]
+    FormatDates --> DetectAnswerType{JSON or<br/>Text?}
+    
+    DetectAnswerType -->|JSON| ReturnJSON[Return with answer_type: json]
+    DetectAnswerType -->|Text| ReturnText[Return with answer_type: text]
+    
+    ReturnJSON --> Sanitize[Sanitize for JSON]
+    ReturnText --> Sanitize
+    HandleError --> End
+    Sanitize --> End
+    
+    style SubstituteMetrics fill:#FFC107,stroke:#F57C00
+    style CheckDeprecated fill:#FF5722,stroke:#D84315
+    style AddSubstitutionNote fill:#FFC107,stroke:#F57C00
+```
+
+## SEO Agent Workflow
+
+```mermaid
+graph TB
+    Start([SEO Query]) --> LoadCredentials[Load Google Sheets Credentials]
+    LoadCredentials --> OpenSpreadsheet[Open Spreadsheet by ID]
+    
+    OpenSpreadsheet --> CheckCache{Worksheet<br/>cached?}
+    CheckCache -->|Yes| UseCache[Use Cached Data]
+    CheckCache -->|No| SelectWorksheet[LLM: Select Best Worksheet]
+    
+    SelectWorksheet --> ParseSelection[Parse Worksheet Name]
+    ParseSelection --> LoadData[Load Worksheet as DataFrame]
+    LoadData --> CacheData[Cache for Request]
+    
+    UseCache --> AnalyzeQuery[LLM: Analyze Query Intent]
+    CacheData --> AnalyzeQuery
+    
+    AnalyzeQuery --> DetermineOp{Operation<br/>Type?}
+    
+    DetermineOp -->|Filter| ApplyFilter[Apply pandas filter]
+    DetermineOp -->|Group/Agg| ApplyGroupBy[Apply groupby + aggregate]
+    DetermineOp -->|Sort| ApplySort[Apply sorting]
+    DetermineOp -->|URL Lookup| LookupURLs[Match URLs with patterns]
+    
+    ApplyFilter --> ProcessData[Process Results]
+    ApplyGroupBy --> ProcessData
+    ApplySort --> ProcessData
+    LookupURLs --> ProcessData
+    
+    ProcessData --> SanitizeData[Handle NaN, numpy types]
+    SanitizeData --> GenerateAnswer[LLM: Generate Summary]
+    
+    GenerateAnswer --> FormatDates[Format dates as dd-mm-yyyy]
+    FormatDates --> DetectType{JSON or<br/>Text?}
+    
+    DetectType -->|JSON| ReturnJSON[Return with answer_type: json]
+    DetectType -->|Text| CleanText[Remove \\n, \\t, markdown]
+    
+    CleanText --> ReturnText[Return with answer_type: text]
+    
+    ReturnJSON --> End([Return to Orchestrator])
+    ReturnText --> End
+    
+    OpenSpreadsheet --> SheetsError{Error?}
+    SheetsError -->|Yes| LogError[Log & Return Error]
+    LogError --> End
+    
+    style SelectWorksheet fill:#2196F3,stroke:#1565C0
+    style AnalyzeQuery fill:#2196F3,stroke:#1565C0
+    style GenerateAnswer fill:#2196F3,stroke:#1565C0
+    style LookupURLs fill:#9C27B0,stroke:#6A1B9A
+```
+
+## Fusion Query Workflow
+
+```mermaid
+graph TB
+    Start([Fusion Query]) --> CheckPropertyId{propertyId<br/>provided?}
+    
+    CheckPropertyId -->|No| ValidationError[Return 422: propertyId required]
+    CheckPropertyId -->|Yes| CallGA4[Process GA4 Query]
+    
+    CallGA4 --> GA4Success{GA4 Data<br/>Retrieved?}
+    GA4Success -->|No| ReturnGA4Error[Return GA4 error]
+    GA4Success -->|Yes| ExtractURLs[Extract pagePath URLs]
+    
+    ExtractURLs --> CheckURLs{URLs<br/>found?}
+    CheckURLs -->|No| NoURLsError[Return: No URLs to match]
+    CheckURLs -->|Yes| CallSEO[SEO Agent: Lookup URLs]
+    
+    CallSEO --> SEOSuccess{SEO Data<br/>Retrieved?}
+    SEOSuccess -->|No| ReturnSEOError[Return SEO error]
+    SEOSuccess -->|Yes| MergeData[Merge GA4 + SEO data by URL]
+    
+    MergeData --> GenerateFusion[LLM: Generate Fusion Answer]
+    GenerateFusion --> FormatDates[Format dates as dd-mm-yyyy]
+    FormatDates --> DetectType{JSON or<br/>Text?}
+    
+    DetectType -->|JSON| ParseJSON[Parse & validate JSON]
+    DetectType -->|Text| CleanText[Remove escape chars]
+    
+    ParseJSON --> SanitizeJSON[Sanitize NaN, numpy types]
+    CleanText --> ReturnText[Return text answer]
+    
+    SanitizeJSON --> ReturnJSON[Return JSON answer]
+    
+    ReturnJSON --> End([Return Combined Response])
+    ReturnText --> End
+    ValidationError --> End
+    ReturnGA4Error --> End
+    NoURLsError --> End
+    ReturnSEOError --> End
+    
+    style MergeData fill:#009688,stroke:#00695C
+    style GenerateFusion fill:#2196F3,stroke:#1565C0
+    style ExtractURLs fill:#9C27B0,stroke:#6A1B9A
+```
+
+
 ## Request Flow
 
 1. **Client** sends POST request with `query` and optional `propertyId`
