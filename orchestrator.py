@@ -265,7 +265,24 @@ Output ONLY one word: GA4, SEO, or FUSION"""
             # Clean up the SEO answer to remove escape characters
             raw_answer = result.get("answer", "")
             state["answer"] = self._clean_llm_response(raw_answer)
-            state["structured_data"] = result.get("data")
+            
+            # Set structured_data without large rows arrays to reduce response size
+            data = result.get("data", {})
+            structured_data = {
+                "operation": data.get("operation"),
+                "row_count": data.get("row_count", 0),
+                "total_rows": result.get("total_rows", 0),
+                "worksheets_queried": result.get("worksheets_queried", []),
+                "columns_available": result.get("columns_available", [])
+            }
+            # Only include summary/sample data, not full rows array
+            if "sample" in data:
+                structured_data["sample"] = data["sample"][:5]  # Limit to 5 rows max
+            if "results" in data:
+                # For multiple operations, include summary without full rows
+                structured_data["operations_count"] = data.get("operations_count", 0)
+            
+            state["structured_data"] = structured_data
             
             state["metadata"]["seo_execution"] = {
                 "columns_available": result.get("columns_available", []),
@@ -317,10 +334,17 @@ Output ONLY one word: GA4, SEO, or FUSION"""
             state["seo_data"] = {"matches": seo_matches.to_dict('records')}
             
             # Step 3: Merge and analyze
-            # (This is simplified - real implementation would do more sophisticated merging)
+            # Create structured_data without rows array to reduce response size
             state["structured_data"] = {
-                "ga4_data": ga4_data,
-                "seo_data": state["seo_data"]
+                "ga4_summary": {
+                    "row_count": ga4_data.get("row_count", 0),
+                    "metrics": ga4_data.get("query_plan", {}).get("metrics", []),
+                    "dimensions": ga4_data.get("query_plan", {}).get("dimensions", []),
+                    "date_range": ga4_data.get("query_plan", {}).get("date_range", {})
+                },
+                "seo_summary": {
+                    "matches_found": len(seo_matches)
+                }
             }
             
             state["metadata"]["fusion_execution"] = {
@@ -346,8 +370,16 @@ Output ONLY one word: GA4, SEO, or FUSION"""
             if state.get("ga4_data") and not state.get("seo_data"):
                 # GA4-only response
                 state["answer"] = self._generate_ga4_answer(state)
+                # Set structured_data without rows array to reduce response size
+                ga4_data = state.get("ga4_data", {})
+                state["structured_data"] = {
+                    "row_count": ga4_data.get("row_count", 0),
+                    "metrics": ga4_data.get("query_plan", {}).get("metrics", []),
+                    "dimensions": ga4_data.get("query_plan", {}).get("dimensions", []),
+                    "date_range": ga4_data.get("query_plan", {}).get("date_range", {})
+                }
             elif state.get("seo_data") and not state.get("ga4_data"):
-                # SEO-only response (should already have answer)
+                # SEO-only response (should already have answer and structured_data)
                 pass
             elif state.get("ga4_data") and state.get("seo_data"):
                 # Fusion response
