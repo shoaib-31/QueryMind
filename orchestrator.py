@@ -428,7 +428,8 @@ CRITICAL RULES:
 - Start directly with {{ or [
 - Use clean, simple formatting
 - Do NOT use escape characters like \\n or \\t
-- Do NOT add any text before or after the JSON"""
+- Do NOT add any text before or after the JSON
+- Format ALL dates as dd-mm-yyyy (e.g., 15-12-2024) regardless of input format"""
         else:
             prompt = f"""Based on this GA4 data, answer the user's question.
 
@@ -447,6 +448,7 @@ CRITICAL RULES:
 - NEVER assume or invent data that is not in the provided data
 - If data looks limited (e.g., only 1 row, or suspicious values), mention it
 - Use the EXACT metric names from the data, do not translate or rename them
+- Format ALL dates as dd-mm-yyyy (e.g., 15-12-2024) regardless of input format
 - Example good format: "Found 3 pages with HTTP: getspike.ai, getspike.ai/about, getspike.ai/blog"
 - Example BAD format: "Found 3 pages:\\n* page1\\n* page2" (never do this)"""
         
@@ -480,7 +482,8 @@ CRITICAL RULES:
 - Combine insights from both GA4 and SEO data
 - Use clean, simple formatting
 - Do NOT use escape characters like \\n or \\t
-- Do NOT add any text before or after the JSON"""
+- Do NOT add any text before or after the JSON
+- Format ALL dates as dd-mm-yyyy (e.g., 15-12-2024) regardless of input format"""
         else:
             prompt = f"""Based on this combined GA4 and SEO data, answer the user's question.
 
@@ -498,6 +501,7 @@ CRITICAL RULES:
 - Combine insights from both GA4 and SEO data
 - Be direct and clear (3-4 sentences max)
 - Do NOT return JSON unless explicitly asked
+- Format ALL dates as dd-mm-yyyy (e.g., 15-12-2024) regardless of input format
 - Example good format: "Top 5 pages by views: page1 (1000 views), page2 (800 views), page3 (600 views)"
 - Example BAD format: "Top pages:\\n1. page1\\n2. page2" (never do this)"""
         

@@ -623,7 +623,8 @@ CRITICAL RULES:
 - Use clean, simple formatting
 - Do NOT use escape characters like \\n or \\t
 - Do NOT add any text before or after the JSON
-- Do NOT wrap in markdown code blocks (no ```json)"""
+- Do NOT wrap in markdown code blocks (no ```json)
+- Format ALL dates as dd-mm-yyyy (e.g., 15-12-2024) regardless of input format"""
         else:
             prompt = f"""Given this SEO data analysis result, answer the user's question.
 
@@ -642,6 +643,7 @@ CRITICAL RULES:
 - Be direct and clear (2-3 sentences max)
 - Explain findings in a way anyone can understand
 - Do NOT return JSON unless explicitly asked
+- Format ALL dates as dd-mm-yyyy (e.g., 15-12-2024) regardless of input format
 - Example good format: "Found 3 broken pages: page1 (404), page2 (500), page3 (403)"
 - Example BAD format: "Found pages:\\n* page1\\n* page2" (never do this)"""
         
