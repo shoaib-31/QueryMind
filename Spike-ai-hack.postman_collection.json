@@ -1,0 +1,964 @@
+{
+	"info": {
+		"_postman_id": "86ad29ae-4f50-4fd7-b1c4-110d87ed86ae",
+		"name": "Spike-ai-hack",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47901721",
+		"_collection_link": "https://speeding-astronaut-288680.postman.co/workspace/Team-Workspace~1303bf94-cd9b-40bd-800c-ce2e008f6740/collection/47901721-86ad29ae-4f50-4fd7-b1c4-110d87ed86ae?action=share&source=collection_link&creator=47901721"
+	},
+	"item": [
+		{
+			"name": "Chat Completion",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer sk-na9nCgGgqOzsdTXBWX1-sQ"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"model\": \"gemini-2.5-flash\", \n    \"messages\": [\n        {\"role\": \"user\", \"content\": \"Say hello!\"}\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://3.110.18.218/chat/completions",
+					"protocol": "http",
+					"host": [
+						"3",
+						"110",
+						"18",
+						"218"
+					],
+					"path": [
+						"chat",
+						"completions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Key Info",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer sk-na9nCgGgqOzsdTXBWX1-sQ"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"model\": \"gemini-2.5-flash\", \n    \"messages\": [\n        {\"role\": \"user\", \"content\": \"Say hello!\"}\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://3.110.18.218/key/info",
+					"protocol": "http",
+					"host": [
+						"3",
+						"110",
+						"18",
+						"218"
+					],
+					"path": [
+						"key",
+						"info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "spike-ai-hack",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"propertyId\": \"481659673\",\n  \"query\": \"Hypothetically assume if GA4 returns no data, what can we say about site headlth ?\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8080/query",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8080",
+					"path": [
+						"query"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "1.1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"propertyId\": \"481659673\",\n  \"query\": \"How is traffic distributed across pages by total users in the last 7 days?\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/query",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 19 Dec 2025 00:50:36 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "576"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"query_type\": \"ga4_only\",\n    \"answer\": \"In the last 7 days, traffic distributed by total users is as follows: pagePath /pricing has 28 totalUsers, pagePath /about has 27 totalUsers, pagePath / has 26 totalUsers, and pagePath /test.html has 1 totalUsers.\",\n    \"answer_type\": \"text\",\n    \"data\": null,\n    \"metadata\": {\n        \"routing\": {\n            \"detected_intent\": \"GA4\",\n            \"query_type\": \"ga4_only\",\n            \"has_property_id\": true\n        },\n        \"ga4_execution\": {\n            \"plan\": {\n                \"metrics\": [\n                    \"totalUsers\"\n                ],\n                \"dimensions\": [\n                    \"pagePath\"\n                ],\n                \"date_range\": {\n                    \"start\": \"7daysAgo\",\n                    \"end\": \"today\"\n                }\n            },\n            \"row_count\": 4\n        },\n        \"processing_time_ms\": 5827.24\n    },\n    \"error\": null\n}"
+				},
+				{
+					"name": "1.2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"Give me a daily breakdown of page views, users, and sessions for the /pricing page over the last 14 days, and summarize any noticeable trends. Give output in JSON format.\",\n  \"propertyId\": \"481659673\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/query",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 19 Dec 2025 00:46:44 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "1156"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"query_type\": \"ga4_only\",\n    \"answer\": {\n        \"daily_breakdown\": [\n            {\n                \"date\": \"18-12-2025\",\n                \"screenPageViews\": 55,\n                \"totalUsers\": 27,\n                \"sessions\": 0\n            },\n            {\n                \"date\": \"15-12-2025\",\n                \"screenPageViews\": 1,\n                \"totalUsers\": 1,\n                \"sessions\": 0\n            }\n        ],\n        \"summary\": \"Data for the /pricing page is available for two days within the last 14 days: 15-12-2025 and 18-12-2025. On 15-12-2025, there was 1 screenPageViews and 1 totalUsers. On 18-12-2025, screenPageViews increased to 55 and totalUsers increased to 27. sessions remained 0 on both days. screenPageViews is the metric used for page views.\"\n    },\n    \"answer_type\": \"json\",\n    \"data\": null,\n    \"metadata\": {\n        \"routing\": {\n            \"detected_intent\": \"GA4\",\n            \"query_type\": \"ga4_only\",\n            \"has_property_id\": true\n        },\n        \"metric_substitutions\": {\n            \"page views\": \"screenPageViews (replaces deprecated pageviews)\"\n        },\n        \"ga4_execution\": {\n            \"plan\": {\n                \"metrics\": [\n                    \"screenPageViews\",\n                    \"totalUsers\",\n                    \"sessions\"\n                ],\n                \"dimensions\": [\n                    \"date\",\n                    \"pagePath\"\n                ],\n                \"date_range\": {\n                    \"start\": \"14daysAgo\",\n                    \"end\": \"today\"\n                },\n                \"filters\": [\n                    {\n                        \"dimension\": \"pagePath\",\n                        \"operator\": \"equals\",\n                        \"value\": \"/pricing\"\n                    }\n                ],\n                \"metric_substitutions\": {\n                    \"page views\": \"screenPageViews (replaces deprecated pageviews)\"\n                }\n            },\n            \"row_count\": 5\n        },\n        \"processing_time_ms\": 13943.54\n    },\n    \"error\": null\n}"
+				},
+				{
+					"name": "1.3",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"What are the top 5 traffic sources driving users to the pricing page in the last 30 days?\",\n  \"propertyId\": \"481659673\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/query",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 19 Dec 2025 00:48:16 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "543"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"query_type\": \"ga4_only\",\n    \"answer\": \"No data found for your GA4 query. The query was executed successfully but returned no results.\",\n    \"answer_type\": \"text\",\n    \"data\": null,\n    \"metadata\": {\n        \"routing\": {\n            \"detected_intent\": \"GA4\",\n            \"query_type\": \"ga4_only\",\n            \"has_property_id\": true\n        },\n        \"ga4_execution\": {\n            \"plan\": {\n                \"metrics\": [\n                    \"sessions\",\n                    \"totalUsers\"\n                ],\n                \"dimensions\": [\n                    \"source\"\n                ],\n                \"date_range\": {\n                    \"start\": \"30daysAgo\",\n                    \"end\": \"today\"\n                },\n                \"filters\": [\n                    {\n                        \"dimension\": \"pagePath\",\n                        \"operator\": \"equals\",\n                        \"value\": \"/pricing\"\n                    }\n                ]\n            },\n            \"row_count\": 0\n        },\n        \"processing_time_ms\": 7051.39\n    },\n    \"error\": null\n}"
+				},
+				{
+					"name": "1.4",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"Give me bounce rate and average session duration by page\",\n  \"propertyId\": \"481659673\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/query",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 19 Dec 2025 00:29:33 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "1040"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"query_type\": \"ga4_only\",\n    \"answer\": \"The metrics you requested (bounce rate, average session duration) are not available in GA4. Here is the available data: For pagePath '/', engagementRate is 1 and userEngagementDuration is 325. For pagePath '/test.html', engagementRate is 1 and userEngagementDuration is 10.\",\n    \"answer_type\": \"text\",\n    \"data\": null,\n    \"metadata\": {\n        \"routing\": {\n            \"detected_intent\": \"GA4\",\n            \"query_type\": \"ga4_only\",\n            \"has_property_id\": true\n        },\n        \"metric_substitutions\": {\n            \"bounce rate\": \"engagementRate (replaces deprecated bounceRate)\",\n            \"average session duration\": \"userEngagementDuration (replaces deprecated averageSessionDuration)\"\n        },\n        \"ga4_execution\": {\n            \"plan\": {\n                \"metrics\": [\n                    \"engagementRate\",\n                    \"userEngagementDuration\"\n                ],\n                \"dimensions\": [\n                    \"pagePath\"\n                ],\n                \"date_range\": {\n                    \"start\": \"2017-01-01\",\n                    \"end\": \"today\"\n                },\n                \"metric_substitutions\": {\n                    \"bounce rate\": \"engagementRate (replaces deprecated bounceRate)\",\n                    \"average session duration\": \"userEngagementDuration (replaces deprecated averageSessionDuration)\"\n                }\n            },\n            \"row_count\": 2\n        },\n        \"processing_time_ms\": 41281.94\n    },\n    \"error\": null\n}"
+				},
+				{
+					"name": "1.5",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"Show users and active users by page\",\n  \"propertyId\": \"481659673\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/query",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 19 Dec 2025 00:32:05 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "619"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"query_type\": \"ga4_only\",\n    \"answer\": \"For pagePath /pricing, totalUsers is 28 and activeUsers is 2; for pagePath /, totalUsers is 27 and activeUsers is 2; for pagePath /about, totalUsers is 27 and activeUsers is 1; for pagePath /test.html, totalUsers is 1 and activeUsers is 1.\",\n    \"answer_type\": \"text\",\n    \"data\": null,\n    \"metadata\": {\n        \"routing\": {\n            \"detected_intent\": \"GA4\",\n            \"query_type\": \"ga4_only\",\n            \"has_property_id\": true\n        },\n        \"ga4_execution\": {\n            \"plan\": {\n                \"metrics\": [\n                    \"totalUsers\",\n                    \"activeUsers\"\n                ],\n                \"dimensions\": [\n                    \"pagePath\"\n                ],\n                \"date_range\": {\n                    \"start\": \"2017-01-01\",\n                    \"end\": \"today\"\n                }\n            },\n            \"row_count\": 4\n        },\n        \"processing_time_ms\": 35963.85\n    },\n    \"error\": null\n}"
+				},
+				{
+					"name": "2.1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"Which pages have meta descriptions that exceed 160 characters, and why does this pose a risk? Provide the page metadata and relevant page-level insights in JSON format.\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/query",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 19 Dec 2025 00:57:43 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "4764"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"query_type\": \"seo_only\",\n    \"answer\": {\n        \"pages_exceeding_limit\": [\n            {\n                \"address\": \"https://getspike.ai/\",\n                \"meta_description\": \"Spike AI's Marketing AGI (MAGI) automates SEO, content strategy, and marketing optimization. Experience the future of B2B SaaS marketing with our autonomous AI system.\",\n                \"length\": 167\n            },\n            {\n                \"address\": \"https://getspike.ai/privacy\",\n                \"meta_description\": \"Read Spike AI's Privacy Policy. Learn how we protect your data and privacy while providing Marketing AGI services. Transparent data practices for B2B SaaS companies.\",\n                \"length\": 165\n            },\n            {\n                \"address\": \"https://getspike.ai/hackathon\",\n                \"meta_description\": \"Join Spike AI BuildX - India's premier builder-first AI engineering challenge. Build real-world systems and win MacBooks, Apple gadgets, and internship opportunities.\",\n                \"length\": 166\n            },\n            {\n                \"address\": \"https://getspike.ai/pricing\",\n                \"meta_description\": \"Explore Spike AI's Marketing AGI pricing plans. From $3,000/month Starter to Enterprise solutions. Get automated SEO, content strategy, and marketing optimization.\",\n                \"length\": 163\n            }\n        ],\n        \"risk_explanation\": \"Meta descriptions exceeding approximately 155-160 characters (or around 920 pixels) risk being truncated by search engines like Google in search results. This truncation can hide important information or calls to action, potentially reducing click-through rates (CTR) as users may not see the full, compelling message.\"\n    },\n    \"answer_type\": \"json\",\n    \"data\": {\n        \"operation\": \"filter\",\n        \"column\": \"meta_description_1_length\",\n        \"condition\": {\n            \"operator\": \"greater_than\",\n            \"value\": 160\n        },\n        \"row_count\": 4,\n        \"total_rows\": 21,\n        \"rows\": [\n            {\n                \"address\": \"https://getspike.ai/\",\n                \"occurrences\": 1,\n                \"meta_description_1\": \"Spike AI's Marketing AGI (MAGI) automates SEO, content strategy, and marketing optimization. Experience the future of B2B SaaS marketing with our autonomous AI system.\",\n                \"meta_description_1_length\": 167,\n                \"meta_description_1_pixel_width\": 1073,\n                \"_source_worksheet\": \"meta_description_all\"\n            },\n            {\n                \"address\": \"https://getspike.ai/privacy\",\n                \"occurrences\": 1,\n                \"meta_description_1\": \"Read Spike AI's Privacy Policy. Learn how we protect your data and privacy while providing Marketing AGI services. Transparent data practices for B2B SaaS companies.\",\n                \"meta_description_1_length\": 165,\n                \"meta_description_1_pixel_width\": 1039,\n                \"_source_worksheet\": \"meta_description_all\"\n            },\n            {\n                \"address\": \"https://getspike.ai/hackathon\",\n                \"occurrences\": 1,\n                \"meta_description_1\": \"Join Spike AI BuildX - India's premier builder-first AI engineering challenge. Build real-world systems and win MacBooks, Apple gadgets, and internship opportunities.\",\n                \"meta_description_1_length\": 166,\n                \"meta_description_1_pixel_width\": 1008,\n                \"_source_worksheet\": \"meta_description_all\"\n            },\n            {\n                \"address\": \"https://getspike.ai/pricing\",\n                \"occurrences\": 1,\n                \"meta_description_1\": \"Explore Spike AI's Marketing AGI pricing plans. From $3,000/month Starter to Enterprise solutions. Get automated SEO, content strategy, and marketing optimization.\",\n                \"meta_description_1_length\": 163,\n                \"meta_description_1_pixel_width\": 1022,\n                \"_source_worksheet\": \"meta_description_all\"\n            }\n        ],\n        \"sample\": [\n            {\n                \"address\": \"https://getspike.ai/\",\n                \"occurrences\": 1,\n                \"meta_description_1\": \"Spike AI's Marketing AGI (MAGI) automates SEO, content strategy, and marketing optimization. Experience the future of B2B SaaS marketing with our autonomous AI system.\",\n                \"meta_description_1_length\": 167,\n                \"meta_description_1_pixel_width\": 1073,\n                \"_source_worksheet\": \"meta_description_all\"\n            },\n            {\n                \"address\": \"https://getspike.ai/privacy\",\n                \"occurrences\": 1,\n                \"meta_description_1\": \"Read Spike AI's Privacy Policy. Learn how we protect your data and privacy while providing Marketing AGI services. Transparent data practices for B2B SaaS companies.\",\n                \"meta_description_1_length\": 165,\n                \"meta_description_1_pixel_width\": 1039,\n                \"_source_worksheet\": \"meta_description_all\"\n            },\n            {\n                \"address\": \"https://getspike.ai/hackathon\",\n                \"occurrences\": 1,\n                \"meta_description_1\": \"Join Spike AI BuildX - India's premier builder-first AI engineering challenge. Build real-world systems and win MacBooks, Apple gadgets, and internship opportunities.\",\n                \"meta_description_1_length\": 166,\n                \"meta_description_1_pixel_width\": 1008,\n                \"_source_worksheet\": \"meta_description_all\"\n            },\n            {\n                \"address\": \"https://getspike.ai/pricing\",\n                \"occurrences\": 1,\n                \"meta_description_1\": \"Explore Spike AI's Marketing AGI pricing plans. From $3,000/month Starter to Enterprise solutions. Get automated SEO, content strategy, and marketing optimization.\",\n                \"meta_description_1_length\": 163,\n                \"meta_description_1_pixel_width\": 1022,\n                \"_source_worksheet\": \"meta_description_all\"\n            }\n        ]\n    },\n    \"metadata\": {\n        \"routing\": {\n            \"detected_intent\": \"SEO\",\n            \"query_type\": \"seo_only\",\n            \"has_property_id\": false\n        },\n        \"seo_execution\": {\n            \"columns_available\": [\n                \"address\",\n                \"occurrences\",\n                \"meta_description_1\",\n                \"meta_description_1_length\",\n                \"meta_description_1_pixel_width\",\n                \"_source_worksheet\"\n            ],\n            \"total_rows\": 21\n        },\n        \"processing_time_ms\": 30458.7\n    },\n    \"error\": null\n}"
+				},
+				{
+					"name": "2.2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"Calculate the percentage of indexable pages on the site. Based on this number, assess whether the site’s technical SEO health is good, average, or poor.\",\n  \"propertyId\": \"481659673\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/query",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 19 Dec 2025 03:47:38 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "860"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"query_type\": \"seo_only\",\n    \"answer\": \"The percentage of indexable pages on the site is 96.12% (99 out of 103 total pages). This percentage suggests good technical SEO health.\",\n    \"answer_type\": \"text\",\n    \"data\": {\n        \"operation\": \"group\",\n        \"row_count\": 0,\n        \"total_rows\": 103,\n        \"worksheets_queried\": [\n            \"url_all\"\n        ],\n        \"columns_available\": [\n            \"address\",\n            \"content_type\",\n            \"status_code\",\n            \"status\",\n            \"indexability\",\n            \"indexability_status\",\n            \"hash\",\n            \"length\",\n            \"canonical_link_element_1\",\n            \"url_encoded_address\",\n            \"_source_worksheet\"\n        ]\n    },\n    \"metadata\": {\n        \"routing\": {\n            \"detected_intent\": \"SEO\",\n            \"query_type\": \"seo_only\",\n            \"has_property_id\": true\n        },\n        \"seo_execution\": {\n            \"columns_available\": [\n                \"address\",\n                \"content_type\",\n                \"status_code\",\n                \"status\",\n                \"indexability\",\n                \"indexability_status\",\n                \"hash\",\n                \"length\",\n                \"canonical_link_element_1\",\n                \"url_encoded_address\",\n                \"_source_worksheet\"\n            ],\n            \"total_rows\": 103\n        },\n        \"processing_time_ms\": 36896.82\n    },\n    \"error\": null\n}"
+				},
+				{
+					"name": "2.3",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"Which pages have title tags longer than 60 characters?\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/query",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 19 Dec 2025 00:34:02 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "4292"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"query_type\": \"seo_only\",\n    \"answer\": \"There are 6 pages with title tags longer than 60 characters: https://getspike.ai/blog/beyond-instinct-the-operating-system-for-modern-marketing-teams/ (64 characters), https://getspike.ai/blog/is-your-martech-stack-obsolete-the-business-case-for-autonomous-ai-tools/ (73 characters), https://getspike.ai/blog/beyond-a-b-testing-how-continuous-optimization-drives-24-7-growth/ (66 characters), https://getspike.ai/blog/magi-2/ (70 characters), https://getspike.ai/blog/why-traditional-cro-is-failing-and-what-self-driving-marketing-solves/ (69 characters), and https://getspike.ai/blog/12-days-of-magi-how-spike-ai-became-the-first-truly-autonomous-marketing-engine/ (80 characters).\",\n    \"answer_type\": \"text\",\n    \"data\": {\n        \"operation\": \"filter\",\n        \"column\": \"title_1_length\",\n        \"condition\": {\n            \"operator\": \"greater_than\",\n            \"value\": 60\n        },\n        \"row_count\": 6,\n        \"total_rows\": 21,\n        \"rows\": [\n            {\n                \"address\": \"https://getspike.ai/blog/beyond-instinct-the-operating-system-for-modern-marketing-teams/\",\n                \"occurrences\": 1,\n                \"title_1\": \"Beyond Instinct: The Operating System for Modern Marketing Teams\",\n                \"title_1_length\": 64,\n                \"title_1_pixel_width\": 610,\n                \"_source_worksheet\": \"page_titles_all\"\n            },\n            {\n                \"address\": \"https://getspike.ai/blog/is-your-martech-stack-obsolete-the-business-case-for-autonomous-ai-tools/\",\n                \"occurrences\": 2,\n                \"title_1\": \"Is Your Martech Stack Obsolete? The Business Case for Autonomous AI Tools\",\n                \"title_1_length\": 73,\n                \"title_1_pixel_width\": 689,\n                \"_source_worksheet\": \"page_titles_all\"\n            },\n            {\n                \"address\": \"https://getspike.ai/blog/beyond-a-b-testing-how-continuous-optimization-drives-24-7-growth/\",\n                \"occurrences\": 1,\n                \"title_1\": \"Beyond A/B Testing: How Continuous Optimization Drives 24/7 Growth\",\n                \"title_1_length\": 66,\n                \"title_1_pixel_width\": 628,\n                \"_source_worksheet\": \"page_titles_all\"\n            },\n            {\n                \"address\": \"https://getspike.ai/blog/magi-2/\",\n                \"occurrences\": 1,\n                \"title_1\": \"Meet MAGI: The End of Tool Chaos and the Start of Autonomous Marketing\",\n                \"title_1_length\": 70,\n                \"title_1_pixel_width\": 668,\n                \"_source_worksheet\": \"page_titles_all\"\n            },\n            {\n                \"address\": \"https://getspike.ai/blog/why-traditional-cro-is-failing-and-what-self-driving-marketing-solves/\",\n                \"occurrences\": 1,\n                \"title_1\": \"Why Traditional CRO Is Failing—and What Self-Driving Marketing Solves\",\n                \"title_1_length\": 69,\n                \"title_1_pixel_width\": 635,\n                \"_source_worksheet\": \"page_titles_all\"\n            },\n            {\n                \"address\": \"https://getspike.ai/blog/12-days-of-magi-how-spike-ai-became-the-first-truly-autonomous-marketing-engine/\",\n                \"occurrences\": 1,\n                \"title_1\": \"12 Days of MAGI: How Spike AI Became the First Truly Autonomous Marketing Engine\",\n                \"title_1_length\": 80,\n                \"title_1_pixel_width\": 759,\n                \"_source_worksheet\": \"page_titles_all\"\n            }\n        ],\n        \"sample\": [\n            {\n                \"address\": \"https://getspike.ai/blog/beyond-instinct-the-operating-system-for-modern-marketing-teams/\",\n                \"occurrences\": 1,\n                \"title_1\": \"Beyond Instinct: The Operating System for Modern Marketing Teams\",\n                \"title_1_length\": 64,\n                \"title_1_pixel_width\": 610,\n                \"_source_worksheet\": \"page_titles_all\"\n            },\n            {\n                \"address\": \"https://getspike.ai/blog/is-your-martech-stack-obsolete-the-business-case-for-autonomous-ai-tools/\",\n                \"occurrences\": 2,\n                \"title_1\": \"Is Your Martech Stack Obsolete? The Business Case for Autonomous AI Tools\",\n                \"title_1_length\": 73,\n                \"title_1_pixel_width\": 689,\n                \"_source_worksheet\": \"page_titles_all\"\n            },\n            {\n                \"address\": \"https://getspike.ai/blog/beyond-a-b-testing-how-continuous-optimization-drives-24-7-growth/\",\n                \"occurrences\": 1,\n                \"title_1\": \"Beyond A/B Testing: How Continuous Optimization Drives 24/7 Growth\",\n                \"title_1_length\": 66,\n                \"title_1_pixel_width\": 628,\n                \"_source_worksheet\": \"page_titles_all\"\n            },\n            {\n                \"address\": \"https://getspike.ai/blog/magi-2/\",\n                \"occurrences\": 1,\n                \"title_1\": \"Meet MAGI: The End of Tool Chaos and the Start of Autonomous Marketing\",\n                \"title_1_length\": 70,\n                \"title_1_pixel_width\": 668,\n                \"_source_worksheet\": \"page_titles_all\"\n            },\n            {\n                \"address\": \"https://getspike.ai/blog/why-traditional-cro-is-failing-and-what-self-driving-marketing-solves/\",\n                \"occurrences\": 1,\n                \"title_1\": \"Why Traditional CRO Is Failing—and What Self-Driving Marketing Solves\",\n                \"title_1_length\": 69,\n                \"title_1_pixel_width\": 635,\n                \"_source_worksheet\": \"page_titles_all\"\n            }\n        ]\n    },\n    \"metadata\": {\n        \"routing\": {\n            \"detected_intent\": \"SEO\",\n            \"query_type\": \"seo_only\",\n            \"has_property_id\": false\n        },\n        \"seo_execution\": {\n            \"columns_available\": [\n                \"address\",\n                \"occurrences\",\n                \"title_1\",\n                \"title_1_length\",\n                \"title_1_pixel_width\",\n                \"_source_worksheet\"\n            ],\n            \"total_rows\": 21\n        },\n        \"processing_time_ms\": 59118.09\n    },\n    \"error\": null\n}"
+				},
+				{
+					"name": "2.4",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"Which pages return a non-200 status code? give in JSON format.\",\n  \"propertyId\": \"481659673\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/query",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 19 Dec 2025 03:18:53 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "7820"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"query_type\": \"seo_only\",\n    \"answer\": [\n        {\n            \"address\": \"https://getspike.co/blog/magi-2/\",\n            \"status_code\": 301,\n            \"status\": \"Moved Permanently\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=home&utm_medium=start%20today\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=home&utm_medium=uncover%20dropoff%20insights\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"http://getspike.co/casestudies/how-securemyorg-improved-lead-conversions-by-31/\",\n            \"status_code\": 301,\n            \"status\": \"Moved Permanently\"\n        },\n        {\n            \"address\": \"https://getspike.co/casestudies/\",\n            \"status_code\": 301,\n            \"status\": \"Moved Permanently\"\n        },\n        {\n            \"address\": \"https://app.getspike.co/\",\n            \"status_code\": 301,\n            \"status\": \"Moved Permanently\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=home&utm_medium=unlock%20optimization\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://getspike.co/blog/how-spike-ai-works/\",\n            \"status_code\": 301,\n            \"status\": \"Moved Permanently\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=home&utm_medium=see%20magi%20in%20action\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://getspike.co/blog/\",\n            \"status_code\": 301,\n            \"status\": \"Moved Permanently\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=home&utm_medium=after%20faq\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=home&utm_medium=pro%20plan\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=home&utm_medium=starter%20plan\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=home&utm_medium=start%20testing%20now\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://getspike.co/casestudies/from-traffic-to-conversions-how-squadcast-optimized-engagement-with-spike-ai/\",\n            \"status_code\": 301,\n            \"status\": \"Moved Permanently\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=home&utm_medium=navbar\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=home&utm_medium=generate%20variants%20instantly\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://getspike.co/casestudies/how-spike-ai-boosted-gsis-website-conversions-by-75/\",\n            \"status_code\": 301,\n            \"status\": \"Moved Permanently\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=about&utm_medium=learn%20how%20it%20works\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=about&utm_medium=navbar\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=about&utm_medium=schdule%20a%20call\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://www.linkedin.com/in/shrestha-pratik/\",\n            \"status_code\": 301,\n            \"status\": \"Moved Permanently\"\n        },\n        {\n            \"address\": \"https://www.linkedin.com/in/deepeshkumar1/\",\n            \"status_code\": 301,\n            \"status\": \"Moved Permanently\"\n        },\n        {\n            \"address\": \"http://getspike.ai/\",\n            \"status_code\": 301,\n            \"status\": \"Moved Permanently\"\n        },\n        {\n            \"address\": \"https://getspike.ai/blog\",\n            \"status_code\": 301,\n            \"status\": \"Moved Permanently\"\n        },\n        {\n            \"address\": \"http://getspike.ai/about\",\n            \"status_code\": 301,\n            \"status\": \"Moved Permanently\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=pricing&utm_medium=starter%20plan\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=pricing&utm_medium=pro%20plan\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=pricing&utm_medium=after%20faq\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=pricing&utm_medium=advanced%20plan\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=careers&utm_medium=navbar\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://discord.gg/2KxpbWDJyN\",\n            \"status_code\": 301,\n            \"status\": \"Moved Permanently\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=pricing&utm_medium=navbar\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"http://getspike.ai/blog/\",\n            \"status_code\": 301,\n            \"status\": \"Moved Permanently\"\n        },\n        {\n            \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=home&utm_medium\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://unstop.com/p/spike-ai-buildx-ai-software-challenge-spike-ai-1601495\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0dJ0exFBCy2B06Vy_cpuz3VTVERD2zpruQ0XaL59RMRJ5igH1Dqi9GuDHyOtAkEDn2hJUEo7pG?ref=getspike.ai\",\n            \"status_code\": 0,\n            \"status\": \"Blocked by robots.txt\"\n        },\n        {\n            \"address\": \"https://getspike.co/casestudies/how-spike-ai-boosted-gsis-website-conversions-by-75/?ref=getspike.ai\",\n            \"status_code\": 301,\n            \"status\": \"Moved Permanently\"\n        },\n        {\n            \"address\": \"https://aws.amazon.com/premiumsupport/knowledge-center/aws-phone-support/\",\n            \"status_code\": 301,\n            \"status\": \"\"\n        },\n        {\n            \"address\": \"https://www2.deloitte.com/content/dam/Deloitte/us/Documents/consulting/us-coupa-procurement-outlook-thriving-to-strive.pdf?ref=getspike.ai\",\n            \"status_code\": 302,\n            \"status\": \"Moved Temporarily\"\n        },\n        {\n            \"address\": \"https://getspike.co/casestudies/how-securemyorg-improved-lead-conversions-by-31/?ref=getspike.ai\",\n            \"status_code\": 301,\n            \"status\": \"Moved Permanently\"\n        },\n        {\n            \"address\": \"https://getspike.co/casestudies/from-traffic-to-conversions-how-squadcast-optimized-engagement-with-spike-ai/?ref=getspike.ai\",\n            \"status_code\": 301,\n            \"status\": \"Moved Permanently\"\n        }\n    ],\n    \"answer_type\": \"json\",\n    \"data\": {\n        \"operation\": \"filter\",\n        \"row_count\": 42,\n        \"total_rows\": 152,\n        \"worksheets_queried\": [\n            \"response_codes_all\"\n        ],\n        \"columns_available\": [\n            \"address\",\n            \"content_type\",\n            \"status_code\",\n            \"status\",\n            \"inlinks\",\n            \"response_time\",\n            \"redirect_url\",\n            \"redirect_type\",\n            \"_source_worksheet\"\n        ],\n        \"sample\": [\n            {\n                \"address\": \"https://getspike.co/blog/magi-2/\",\n                \"content_type\": \"\",\n                \"status_code\": 301,\n                \"status\": \"Moved Permanently\",\n                \"inlinks\": 1,\n                \"response_time\": 0.228,\n                \"redirect_url\": \"https://getspike.ai/blog/magi-2/\",\n                \"redirect_type\": \"HTTP Redirect\",\n                \"_source_worksheet\": \"response_codes_all\"\n            },\n            {\n                \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=home&utm_medium=start%20today\",\n                \"content_type\": \"\",\n                \"status_code\": 0,\n                \"status\": \"Blocked by robots.txt\",\n                \"inlinks\": 1,\n                \"response_time\": \"\",\n                \"redirect_url\": \"\",\n                \"redirect_type\": \"\",\n                \"_source_worksheet\": \"response_codes_all\"\n            },\n            {\n                \"address\": \"https://calendly.com/spike-ai-team/30min?utm_source=home&utm_medium=uncover%20dropoff%20insights\",\n                \"content_type\": \"\",\n                \"status_code\": 0,\n                \"status\": \"Blocked by robots.txt\",\n                \"inlinks\": 1,\n                \"response_time\": \"\",\n                \"redirect_url\": \"\",\n                \"redirect_type\": \"\",\n                \"_source_worksheet\": \"response_codes_all\"\n            },\n            {\n                \"address\": \"http://getspike.co/casestudies/how-securemyorg-improved-lead-conversions-by-31/\",\n                \"content_type\": \"\",\n                \"status_code\": 301,\n                \"status\": \"Moved Permanently\",\n                \"inlinks\": 1,\n                \"response_time\": 0.243,\n                \"redirect_url\": \"https://getspike.ai/casestudies/how-securemyorg-improved-lead-conversions-by-31/\",\n                \"redirect_type\": \"HTTP Redirect\",\n                \"_source_worksheet\": \"response_codes_all\"\n            },\n            {\n                \"address\": \"https://getspike.co/casestudies/\",\n                \"content_type\": \"\",\n                \"status_code\": 301,\n                \"status\": \"Moved Permanently\",\n                \"inlinks\": 5,\n                \"response_time\": 0.415,\n                \"redirect_url\": \"https://getspike.ai/casestudies/\",\n                \"redirect_type\": \"HTTP Redirect\",\n                \"_source_worksheet\": \"response_codes_all\"\n            }\n        ]\n    },\n    \"metadata\": {\n        \"routing\": {\n            \"detected_intent\": \"SEO\",\n            \"query_type\": \"seo_only\",\n            \"has_property_id\": true\n        },\n        \"seo_execution\": {\n            \"columns_available\": [\n                \"address\",\n                \"content_type\",\n                \"status_code\",\n                \"status\",\n                \"inlinks\",\n                \"response_time\",\n                \"redirect_url\",\n                \"redirect_type\",\n                \"_source_worksheet\"\n            ],\n            \"total_rows\": 152\n        },\n        \"processing_time_ms\": 66404.41\n    },\n    \"error\": null\n}"
+				},
+				{
+					"name": "2.5",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"Which URLs do not use HTTPS and have title tags longer than 60 characters?\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/query",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 19 Dec 2025 01:00:28 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "35801"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"query_type\": \"seo_only\",\n    \"answer\": \"Based on the provided data, there are no URLs that do not use HTTPS and have title tags longer than 60 characters. All URLs found that do not use HTTPS have title lengths of 46 or 0.\",\n    \"answer_type\": \"text\",\n    \"data\": {\n        \"operation\": \"multiple\",\n        \"operations_count\": 2,\n        \"results\": [\n            {\n                \"operation\": \"filter\",\n                \"column\": \"address\",\n                \"condition\": {\n                    \"operator\": \"contains\",\n                    \"value\": \"http://\"\n                },\n                \"row_count\": 4,\n                \"total_rows\": 103,\n                \"rows\": [\n                    {\n                        \"address\": \"http://getspike.ai/about\",\n                        \"content_type\": \"text/html\",\n                        \"status_code\": 200,\n                        \"status\": \"OK\",\n                        \"title_1\": \"About Spike AI - Revolutionizing B2B Marketing\",\n                        \"title_1_length\": 46,\n                        \"title_1_pixel_width\": 417,\n                        \"meta_description_1\": \"Learn about Spike AI's mission to revolutionize B2B marketing with autonomous AI. Meet our team building the future of Marketing AGI for growth leaders.\",\n                        \"meta_description_1_length\": 152,\n                        \"meta_description_1_pixel_width\": 952,\n                        \"meta_keywords_1\": \"\",\n                        \"meta_keywords_1_length\": 0,\n                        \"h1_1\": \"Building a Better\",\n                        \"h1_1_length\": 17,\n                        \"h2_1\": \"Why Website Optimization?\",\n                        \"h2_1_length\": 25,\n                        \"h2_2\": \"Why We Do What We Do\",\n                        \"h2_2_length\": 20,\n                        \"meta_robots_1\": \"\",\n                        \"x_robots_tag_1\": \"\",\n                        \"meta_refresh_1\": \"\",\n                        \"canonical_link_element_1\": \"\",\n                        \"rel=\\\"next\\\"_1\": \"\",\n                        \"rel=\\\"prev\\\"_1\": \"\",\n                        \"http_rel=\\\"next\\\"_1\": \"\",\n                        \"http_rel=\\\"prev\\\"_1\": \"\",\n                        \"amphtml_link_element\": \"\",\n                        \"size_(bytes)\": 44452,\n                        \"transferred_(bytes)\": 9818,\n                        \"total_transferred_(bytes)\": 9818,\n                        \"co2_(mg)\": 3.824,\n                        \"carbon_rating\": \"\",\n                        \"word_count\": 409,\n                        \"sentence_count\": 67,\n                        \"average_words_per_sentence\": 6.104,\n                        \"flesch_reading_ease_score\": 48.193,\n                        \"readability\": \"Hard\",\n                        \"text_ratio\": 7.639,\n                        \"crawl_depth\": 1,\n                        \"folder_depth\": 0,\n                        \"link_score\": \"\",\n                        \"inlinks\": 13,\n                        \"unique_inlinks\": 6,\n                        \"unique_js_inlinks\": 0,\n                        \"%_of_total\": 28.57,\n                        \"outlinks\": 15,\n                        \"unique_outlinks\": 8,\n                        \"unique_js_outlinks\": 0,\n                        \"external_outlinks\": 9,\n                        \"unique_external_outlinks\": 9,\n                        \"unique_external_js_outlinks\": 0,\n                        \"closest_similarity_match\": \"\",\n                        \"no._near_duplicates\": \"\",\n                        \"spelling_errors\": \"\",\n                        \"grammar_errors\": \"\",\n                        \"hash\": \"b60739d824f45ebecbf44f33abab220b\",\n                        \"response_time\": 0.508,\n                        \"last_modified\": \"Mon, 15 Dec 2025 08:54:40 GMT\",\n                        \"redirect_url\": \"\",\n                        \"redirect_type\": \"\",\n                        \"cookies\": \"\",\n                        \"language\": \"en\",\n                        \"http_version\": 1.1,\n                        \"mobile_alternate_link\": \"\",\n                        \"url_encoded_address\": \"http://getspike.ai/about\",\n                        \"crawl_timestamp\": \"2025-12-17 18:59:48\",\n                        \"_source_worksheet\": \"internal_all\"\n                    },\n                    {\n                        \"address\": \"http://getspike.ai/\",\n                        \"content_type\": \"text/html\",\n                        \"status_code\": 301,\n                        \"status\": \"Moved Permanently\",\n                        \"title_1\": \"\",\n                        \"title_1_length\": 0,\n                        \"title_1_pixel_width\": 0,\n                        \"meta_description_1\": \"\",\n                        \"meta_description_1_length\": 0,\n                        \"meta_description_1_pixel_width\": 0,\n                        \"meta_keywords_1\": \"\",\n                        \"meta_keywords_1_length\": 0,\n                        \"h1_1\": \"\",\n                        \"h1_1_length\": 0,\n                        \"h2_1\": \"\",\n                        \"h2_1_length\": 0,\n                        \"h2_2\": \"\",\n                        \"h2_2_length\": 0,\n                        \"meta_robots_1\": \"\",\n                        \"x_robots_tag_1\": \"\",\n                        \"meta_refresh_1\": \"\",\n                        \"canonical_link_element_1\": \"\",\n                        \"rel=\\\"next\\\"_1\": \"\",\n                        \"rel=\\\"prev\\\"_1\": \"\",\n                        \"http_rel=\\\"next\\\"_1\": \"\",\n                        \"http_rel=\\\"prev\\\"_1\": \"\",\n                        \"amphtml_link_element\": \"\",\n                        \"size_(bytes)\": 167,\n                        \"transferred_(bytes)\": 167,\n                        \"total_transferred_(bytes)\": 167,\n                        \"co2_(mg)\": 0.065,\n                        \"carbon_rating\": \"\",\n                        \"word_count\": 0,\n                        \"sentence_count\": \"\",\n                        \"average_words_per_sentence\": \"\",\n                        \"flesch_reading_ease_score\": \"\",\n                        \"readability\": \"\",\n                        \"text_ratio\": 0,\n                        \"crawl_depth\": 2,\n                        \"folder_depth\": 0,\n                        \"link_score\": \"\",\n                        \"inlinks\": 14,\n                        \"unique_inlinks\": 14,\n                        \"unique_js_inlinks\": 0,\n                        \"%_of_total\": 66.67,\n                        \"outlinks\": 0,\n                        \"unique_outlinks\": 0,\n                        \"unique_js_outlinks\": 0,\n                        \"external_outlinks\": 0,\n                        \"unique_external_outlinks\": 0,\n                        \"unique_external_js_outlinks\": 0,\n                        \"closest_similarity_match\": \"\",\n                        \"no._near_duplicates\": \"\",\n                        \"spelling_errors\": \"\",\n                        \"grammar_errors\": \"\",\n                        \"hash\": \"\",\n                        \"response_time\": 0.021,\n                        \"last_modified\": \"\",\n                        \"redirect_url\": \"https://getspike.ai/\",\n                        \"redirect_type\": \"HTTP Redirect\",\n                        \"cookies\": \"\",\n                        \"language\": \"\",\n                        \"http_version\": 1.1,\n                        \"mobile_alternate_link\": \"\",\n                        \"url_encoded_address\": \"http://getspike.ai/\",\n                        \"crawl_timestamp\": \"2025-12-17 18:59:51\",\n                        \"_source_worksheet\": \"internal_all\"\n                    },\n                    {\n                        \"address\": \"http://getspike.ai/about\",\n                        \"content_type\": \"text/html\",\n                        \"status_code\": 301,\n                        \"status\": \"Moved Permanently\",\n                        \"title_1\": \"\",\n                        \"title_1_length\": 0,\n                        \"title_1_pixel_width\": 0,\n                        \"meta_description_1\": \"\",\n                        \"meta_description_1_length\": 0,\n                        \"meta_description_1_pixel_width\": 0,\n                        \"meta_keywords_1\": \"\",\n                        \"meta_keywords_1_length\": 0,\n                        \"h1_1\": \"\",\n                        \"h1_1_length\": 0,\n                        \"h2_1\": \"\",\n                        \"h2_1_length\": 0,\n                        \"h2_2\": \"\",\n                        \"h2_2_length\": 0,\n                        \"meta_robots_1\": \"\",\n                        \"x_robots_tag_1\": \"\",\n                        \"meta_refresh_1\": \"\",\n                        \"canonical_link_element_1\": \"\",\n                        \"rel=\\\"next\\\"_1\": \"\",\n                        \"rel=\\\"prev\\\"_1\": \"\",\n                        \"http_rel=\\\"next\\\"_1\": \"\",\n                        \"http_rel=\\\"prev\\\"_1\": \"\",\n                        \"amphtml_link_element\": \"\",\n                        \"size_(bytes)\": 167,\n                        \"transferred_(bytes)\": 167,\n                        \"total_transferred_(bytes)\": 167,\n                        \"co2_(mg)\": 0.065,\n                        \"carbon_rating\": \"\",\n                        \"word_count\": 0,\n                        \"sentence_count\": \"\",\n                        \"average_words_per_sentence\": \"\",\n                        \"flesch_reading_ease_score\": \"\",\n                        \"readability\": \"\",\n                        \"text_ratio\": 0,\n                        \"crawl_depth\": 2,\n                        \"folder_depth\": 0,\n                        \"link_score\": \"\",\n                        \"inlinks\": 14,\n                        \"unique_inlinks\": 14,\n                        \"unique_js_inlinks\": 0,\n                        \"%_of_total\": 66.67,\n                        \"outlinks\": 0,\n                        \"unique_outlinks\": 0,\n                        \"unique_js_outlinks\": 0,\n                        \"external_outlinks\": 0,\n                        \"unique_external_outlinks\": 0,\n                        \"unique_external_js_outlinks\": 0,\n                        \"closest_similarity_match\": \"\",\n                        \"no._near_duplicates\": \"\",\n                        \"spelling_errors\": \"\",\n                        \"grammar_errors\": \"\",\n                        \"hash\": \"\",\n                        \"response_time\": 0.04,\n                        \"last_modified\": \"\",\n                        \"redirect_url\": \"http://getspike.ai/about\",\n                        \"redirect_type\": \"HTTP Redirect\",\n                        \"cookies\": \"\",\n                        \"language\": \"\",\n                        \"http_version\": 1.1,\n                        \"mobile_alternate_link\": \"\",\n                        \"url_encoded_address\": \"http://getspike.ai/about\",\n                        \"crawl_timestamp\": \"2025-12-17 18:59:52\",\n                        \"_source_worksheet\": \"internal_all\"\n                    },\n                    {\n                        \"address\": \"http://getspike.ai/blog/\",\n                        \"content_type\": \"text/html\",\n                        \"status_code\": 301,\n                        \"status\": \"Moved Permanently\",\n                        \"title_1\": \"\",\n                        \"title_1_length\": 0,\n                        \"title_1_pixel_width\": 0,\n                        \"meta_description_1\": \"\",\n                        \"meta_description_1_length\": 0,\n                        \"meta_description_1_pixel_width\": 0,\n                        \"meta_keywords_1\": \"\",\n                        \"meta_keywords_1_length\": 0,\n                        \"h1_1\": \"\",\n                        \"h1_1_length\": 0,\n                        \"h2_1\": \"\",\n                        \"h2_1_length\": 0,\n                        \"h2_2\": \"\",\n                        \"h2_2_length\": 0,\n                        \"meta_robots_1\": \"\",\n                        \"x_robots_tag_1\": \"\",\n                        \"meta_refresh_1\": \"\",\n                        \"canonical_link_element_1\": \"\",\n                        \"rel=\\\"next\\\"_1\": \"\",\n                        \"rel=\\\"prev\\\"_1\": \"\",\n                        \"http_rel=\\\"next\\\"_1\": \"\",\n                        \"http_rel=\\\"prev\\\"_1\": \"\",\n                        \"amphtml_link_element\": \"\",\n                        \"size_(bytes)\": 167,\n                        \"transferred_(bytes)\": 167,\n                        \"total_transferred_(bytes)\": 167,\n                        \"co2_(mg)\": 0.065,\n                        \"carbon_rating\": \"\",\n                        \"word_count\": 0,\n                        \"sentence_count\": \"\",\n                        \"average_words_per_sentence\": \"\",\n                        \"flesch_reading_ease_score\": \"\",\n                        \"readability\": \"\",\n                        \"text_ratio\": 0,\n                        \"crawl_depth\": 3,\n                        \"folder_depth\": 1,\n                        \"link_score\": \"\",\n                        \"inlinks\": 0,\n                        \"unique_inlinks\": 0,\n                        \"unique_js_inlinks\": 0,\n                        \"%_of_total\": 0,\n                        \"outlinks\": 0,\n                        \"unique_outlinks\": 0,\n                        \"unique_js_outlinks\": 0,\n                        \"external_outlinks\": 0,\n                        \"unique_external_outlinks\": 0,\n                        \"unique_external_js_outlinks\": 0,\n                        \"closest_similarity_match\": \"\",\n                        \"no._near_duplicates\": \"\",\n                        \"spelling_errors\": \"\",\n                        \"grammar_errors\": \"\",\n                        \"hash\": \"\",\n                        \"response_time\": 0.026,\n                        \"last_modified\": \"\",\n                        \"redirect_url\": \"https://getspike.ai/blog/\",\n                        \"redirect_type\": \"HTTP Redirect\",\n                        \"cookies\": \"\",\n                        \"language\": \"\",\n                        \"http_version\": 1.1,\n                        \"mobile_alternate_link\": \"\",\n                        \"url_encoded_address\": \"http://getspike.ai/blog/\",\n                        \"crawl_timestamp\": \"2025-12-17 18:59:53\",\n                        \"_source_worksheet\": \"internal_all\"\n                    }\n                ],\n                \"sample\": [\n                    {\n                        \"address\": \"http://getspike.ai/about\",\n                        \"content_type\": \"text/html\",\n                        \"status_code\": 200,\n                        \"status\": \"OK\",\n                        \"title_1\": \"About Spike AI - Revolutionizing B2B Marketing\",\n                        \"title_1_length\": 46,\n                        \"title_1_pixel_width\": 417,\n                        \"meta_description_1\": \"Learn about Spike AI's mission to revolutionize B2B marketing with autonomous AI. Meet our team building the future of Marketing AGI for growth leaders.\",\n                        \"meta_description_1_length\": 152,\n                        \"meta_description_1_pixel_width\": 952,\n                        \"meta_keywords_1\": \"\",\n                        \"meta_keywords_1_length\": 0,\n                        \"h1_1\": \"Building a Better\",\n                        \"h1_1_length\": 17,\n                        \"h2_1\": \"Why Website Optimization?\",\n                        \"h2_1_length\": 25,\n                        \"h2_2\": \"Why We Do What We Do\",\n                        \"h2_2_length\": 20,\n                        \"meta_robots_1\": \"\",\n                        \"x_robots_tag_1\": \"\",\n                        \"meta_refresh_1\": \"\",\n                        \"canonical_link_element_1\": \"\",\n                        \"rel=\\\"next\\\"_1\": \"\",\n                        \"rel=\\\"prev\\\"_1\": \"\",\n                        \"http_rel=\\\"next\\\"_1\": \"\",\n                        \"http_rel=\\\"prev\\\"_1\": \"\",\n                        \"amphtml_link_element\": \"\",\n                        \"size_(bytes)\": 44452,\n                        \"transferred_(bytes)\": 9818,\n                        \"total_transferred_(bytes)\": 9818,\n                        \"co2_(mg)\": 3.824,\n                        \"carbon_rating\": \"\",\n                        \"word_count\": 409,\n                        \"sentence_count\": 67,\n                        \"average_words_per_sentence\": 6.104,\n                        \"flesch_reading_ease_score\": 48.193,\n                        \"readability\": \"Hard\",\n                        \"text_ratio\": 7.639,\n                        \"crawl_depth\": 1,\n                        \"folder_depth\": 0,\n                        \"link_score\": \"\",\n                        \"inlinks\": 13,\n                        \"unique_inlinks\": 6,\n                        \"unique_js_inlinks\": 0,\n                        \"%_of_total\": 28.57,\n                        \"outlinks\": 15,\n                        \"unique_outlinks\": 8,\n                        \"unique_js_outlinks\": 0,\n                        \"external_outlinks\": 9,\n                        \"unique_external_outlinks\": 9,\n                        \"unique_external_js_outlinks\": 0,\n                        \"closest_similarity_match\": \"\",\n                        \"no._near_duplicates\": \"\",\n                        \"spelling_errors\": \"\",\n                        \"grammar_errors\": \"\",\n                        \"hash\": \"b60739d824f45ebecbf44f33abab220b\",\n                        \"response_time\": 0.508,\n                        \"last_modified\": \"Mon, 15 Dec 2025 08:54:40 GMT\",\n                        \"redirect_url\": \"\",\n                        \"redirect_type\": \"\",\n                        \"cookies\": \"\",\n                        \"language\": \"en\",\n                        \"http_version\": 1.1,\n                        \"mobile_alternate_link\": \"\",\n                        \"url_encoded_address\": \"http://getspike.ai/about\",\n                        \"crawl_timestamp\": \"2025-12-17 18:59:48\",\n                        \"_source_worksheet\": \"internal_all\"\n                    },\n                    {\n                        \"address\": \"http://getspike.ai/\",\n                        \"content_type\": \"text/html\",\n                        \"status_code\": 301,\n                        \"status\": \"Moved Permanently\",\n                        \"title_1\": \"\",\n                        \"title_1_length\": 0,\n                        \"title_1_pixel_width\": 0,\n                        \"meta_description_1\": \"\",\n                        \"meta_description_1_length\": 0,\n                        \"meta_description_1_pixel_width\": 0,\n                        \"meta_keywords_1\": \"\",\n                        \"meta_keywords_1_length\": 0,\n                        \"h1_1\": \"\",\n                        \"h1_1_length\": 0,\n                        \"h2_1\": \"\",\n                        \"h2_1_length\": 0,\n                        \"h2_2\": \"\",\n                        \"h2_2_length\": 0,\n                        \"meta_robots_1\": \"\",\n                        \"x_robots_tag_1\": \"\",\n                        \"meta_refresh_1\": \"\",\n                        \"canonical_link_element_1\": \"\",\n                        \"rel=\\\"next\\\"_1\": \"\",\n                        \"rel=\\\"prev\\\"_1\": \"\",\n                        \"http_rel=\\\"next\\\"_1\": \"\",\n                        \"http_rel=\\\"prev\\\"_1\": \"\",\n                        \"amphtml_link_element\": \"\",\n                        \"size_(bytes)\": 167,\n                        \"transferred_(bytes)\": 167,\n                        \"total_transferred_(bytes)\": 167,\n                        \"co2_(mg)\": 0.065,\n                        \"carbon_rating\": \"\",\n                        \"word_count\": 0,\n                        \"sentence_count\": \"\",\n                        \"average_words_per_sentence\": \"\",\n                        \"flesch_reading_ease_score\": \"\",\n                        \"readability\": \"\",\n                        \"text_ratio\": 0,\n                        \"crawl_depth\": 2,\n                        \"folder_depth\": 0,\n                        \"link_score\": \"\",\n                        \"inlinks\": 14,\n                        \"unique_inlinks\": 14,\n                        \"unique_js_inlinks\": 0,\n                        \"%_of_total\": 66.67,\n                        \"outlinks\": 0,\n                        \"unique_outlinks\": 0,\n                        \"unique_js_outlinks\": 0,\n                        \"external_outlinks\": 0,\n                        \"unique_external_outlinks\": 0,\n                        \"unique_external_js_outlinks\": 0,\n                        \"closest_similarity_match\": \"\",\n                        \"no._near_duplicates\": \"\",\n                        \"spelling_errors\": \"\",\n                        \"grammar_errors\": \"\",\n                        \"hash\": \"\",\n                        \"response_time\": 0.021,\n                        \"last_modified\": \"\",\n                        \"redirect_url\": \"https://getspike.ai/\",\n                        \"redirect_type\": \"HTTP Redirect\",\n                        \"cookies\": \"\",\n                        \"language\": \"\",\n                        \"http_version\": 1.1,\n                        \"mobile_alternate_link\": \"\",\n                        \"url_encoded_address\": \"http://getspike.ai/\",\n                        \"crawl_timestamp\": \"2025-12-17 18:59:51\",\n                        \"_source_worksheet\": \"internal_all\"\n                    },\n                    {\n                        \"address\": \"http://getspike.ai/about\",\n                        \"content_type\": \"text/html\",\n                        \"status_code\": 301,\n                        \"status\": \"Moved Permanently\",\n                        \"title_1\": \"\",\n                        \"title_1_length\": 0,\n                        \"title_1_pixel_width\": 0,\n                        \"meta_description_1\": \"\",\n                        \"meta_description_1_length\": 0,\n                        \"meta_description_1_pixel_width\": 0,\n                        \"meta_keywords_1\": \"\",\n                        \"meta_keywords_1_length\": 0,\n                        \"h1_1\": \"\",\n                        \"h1_1_length\": 0,\n                        \"h2_1\": \"\",\n                        \"h2_1_length\": 0,\n                        \"h2_2\": \"\",\n                        \"h2_2_length\": 0,\n                        \"meta_robots_1\": \"\",\n                        \"x_robots_tag_1\": \"\",\n                        \"meta_refresh_1\": \"\",\n                        \"canonical_link_element_1\": \"\",\n                        \"rel=\\\"next\\\"_1\": \"\",\n                        \"rel=\\\"prev\\\"_1\": \"\",\n                        \"http_rel=\\\"next\\\"_1\": \"\",\n                        \"http_rel=\\\"prev\\\"_1\": \"\",\n                        \"amphtml_link_element\": \"\",\n                        \"size_(bytes)\": 167,\n                        \"transferred_(bytes)\": 167,\n                        \"total_transferred_(bytes)\": 167,\n                        \"co2_(mg)\": 0.065,\n                        \"carbon_rating\": \"\",\n                        \"word_count\": 0,\n                        \"sentence_count\": \"\",\n                        \"average_words_per_sentence\": \"\",\n                        \"flesch_reading_ease_score\": \"\",\n                        \"readability\": \"\",\n                        \"text_ratio\": 0,\n                        \"crawl_depth\": 2,\n                        \"folder_depth\": 0,\n                        \"link_score\": \"\",\n                        \"inlinks\": 14,\n                        \"unique_inlinks\": 14,\n                        \"unique_js_inlinks\": 0,\n                        \"%_of_total\": 66.67,\n                        \"outlinks\": 0,\n                        \"unique_outlinks\": 0,\n                        \"unique_js_outlinks\": 0,\n                        \"external_outlinks\": 0,\n                        \"unique_external_outlinks\": 0,\n                        \"unique_external_js_outlinks\": 0,\n                        \"closest_similarity_match\": \"\",\n                        \"no._near_duplicates\": \"\",\n                        \"spelling_errors\": \"\",\n                        \"grammar_errors\": \"\",\n                        \"hash\": \"\",\n                        \"response_time\": 0.04,\n                        \"last_modified\": \"\",\n                        \"redirect_url\": \"http://getspike.ai/about\",\n                        \"redirect_type\": \"HTTP Redirect\",\n                        \"cookies\": \"\",\n                        \"language\": \"\",\n                        \"http_version\": 1.1,\n                        \"mobile_alternate_link\": \"\",\n                        \"url_encoded_address\": \"http://getspike.ai/about\",\n                        \"crawl_timestamp\": \"2025-12-17 18:59:52\",\n                        \"_source_worksheet\": \"internal_all\"\n                    },\n                    {\n                        \"address\": \"http://getspike.ai/blog/\",\n                        \"content_type\": \"text/html\",\n                        \"status_code\": 301,\n                        \"status\": \"Moved Permanently\",\n                        \"title_1\": \"\",\n                        \"title_1_length\": 0,\n                        \"title_1_pixel_width\": 0,\n                        \"meta_description_1\": \"\",\n                        \"meta_description_1_length\": 0,\n                        \"meta_description_1_pixel_width\": 0,\n                        \"meta_keywords_1\": \"\",\n                        \"meta_keywords_1_length\": 0,\n                        \"h1_1\": \"\",\n                        \"h1_1_length\": 0,\n                        \"h2_1\": \"\",\n                        \"h2_1_length\": 0,\n                        \"h2_2\": \"\",\n                        \"h2_2_length\": 0,\n                        \"meta_robots_1\": \"\",\n                        \"x_robots_tag_1\": \"\",\n                        \"meta_refresh_1\": \"\",\n                        \"canonical_link_element_1\": \"\",\n                        \"rel=\\\"next\\\"_1\": \"\",\n                        \"rel=\\\"prev\\\"_1\": \"\",\n                        \"http_rel=\\\"next\\\"_1\": \"\",\n                        \"http_rel=\\\"prev\\\"_1\": \"\",\n                        \"amphtml_link_element\": \"\",\n                        \"size_(bytes)\": 167,\n                        \"transferred_(bytes)\": 167,\n                        \"total_transferred_(bytes)\": 167,\n                        \"co2_(mg)\": 0.065,\n                        \"carbon_rating\": \"\",\n                        \"word_count\": 0,\n                        \"sentence_count\": \"\",\n                        \"average_words_per_sentence\": \"\",\n                        \"flesch_reading_ease_score\": \"\",\n                        \"readability\": \"\",\n                        \"text_ratio\": 0,\n                        \"crawl_depth\": 3,\n                        \"folder_depth\": 1,\n                        \"link_score\": \"\",\n                        \"inlinks\": 0,\n                        \"unique_inlinks\": 0,\n                        \"unique_js_inlinks\": 0,\n                        \"%_of_total\": 0,\n                        \"outlinks\": 0,\n                        \"unique_outlinks\": 0,\n                        \"unique_js_outlinks\": 0,\n                        \"external_outlinks\": 0,\n                        \"unique_external_outlinks\": 0,\n                        \"unique_external_js_outlinks\": 0,\n                        \"closest_similarity_match\": \"\",\n                        \"no._near_duplicates\": \"\",\n                        \"spelling_errors\": \"\",\n                        \"grammar_errors\": \"\",\n                        \"hash\": \"\",\n                        \"response_time\": 0.026,\n                        \"last_modified\": \"\",\n                        \"redirect_url\": \"https://getspike.ai/blog/\",\n                        \"redirect_type\": \"HTTP Redirect\",\n                        \"cookies\": \"\",\n                        \"language\": \"\",\n                        \"http_version\": 1.1,\n                        \"mobile_alternate_link\": \"\",\n                        \"url_encoded_address\": \"http://getspike.ai/blog/\",\n                        \"crawl_timestamp\": \"2025-12-17 18:59:53\",\n                        \"_source_worksheet\": \"internal_all\"\n                    }\n                ]\n            },\n            {\n                \"operation\": \"filter\",\n                \"column\": \"title_1_length\",\n                \"condition\": {\n                    \"operator\": \"greater_than\",\n                    \"value\": 60\n                },\n                \"row_count\": 6,\n                \"total_rows\": 103,\n                \"rows\": [\n                    {\n                        \"address\": \"https://getspike.ai/blog/beyond-instinct-the-operating-system-for-modern-marketing-teams/\",\n                        \"content_type\": \"text/html; charset=utf-8\",\n                        \"status_code\": 200,\n                        \"status\": \"OK\",\n                        \"title_1\": \"Beyond Instinct: The Operating System for Modern Marketing Teams\",\n                        \"title_1_length\": 64,\n                        \"title_1_pixel_width\": 610,\n                        \"meta_description_1\": \"\",\n                        \"meta_description_1_length\": 0,\n                        \"meta_description_1_pixel_width\": 0,\n                        \"meta_keywords_1\": \"\",\n                        \"meta_keywords_1_length\": 0,\n                        \"h1_1\": \"Beyond Instinct: The Operating System for Modern Marketing Teams\",\n                        \"h1_1_length\": 64,\n                        \"h2_1\": \"Read more\",\n                        \"h2_1_length\": 9,\n                        \"h2_2\": \"The Marketing AGI Frontier\",\n                        \"h2_2_length\": 26,\n                        \"meta_robots_1\": \"\",\n                        \"x_robots_tag_1\": \"\",\n                        \"meta_refresh_1\": \"\",\n                        \"canonical_link_element_1\": \"https://getspike.ai/blog/beyond-instinct-the-operating-system-for-modern-marketing-teams/\",\n                        \"rel=\\\"next\\\"_1\": \"\",\n                        \"rel=\\\"prev\\\"_1\": \"\",\n                        \"http_rel=\\\"next\\\"_1\": \"\",\n                        \"http_rel=\\\"prev\\\"_1\": \"\",\n                        \"amphtml_link_element\": \"\",\n                        \"size_(bytes)\": 31232,\n                        \"transferred_(bytes)\": 9496,\n                        \"total_transferred_(bytes)\": 9496,\n                        \"co2_(mg)\": 3.698,\n                        \"carbon_rating\": \"\",\n                        \"word_count\": 908,\n                        \"sentence_count\": 155,\n                        \"average_words_per_sentence\": 5.858,\n                        \"flesch_reading_ease_score\": 74.455,\n                        \"readability\": \"Fairly Easy\",\n                        \"text_ratio\": 21.343,\n                        \"crawl_depth\": 1,\n                        \"folder_depth\": 2,\n                        \"link_score\": \"\",\n                        \"inlinks\": 18,\n                        \"unique_inlinks\": 17,\n                        \"unique_js_inlinks\": 0,\n                        \"%_of_total\": 80.95,\n                        \"outlinks\": 12,\n                        \"unique_outlinks\": 9,\n                        \"unique_js_outlinks\": 0,\n                        \"external_outlinks\": 1,\n                        \"unique_external_outlinks\": 1,\n                        \"unique_external_js_outlinks\": 0,\n                        \"closest_similarity_match\": \"\",\n                        \"no._near_duplicates\": \"\",\n                        \"spelling_errors\": \"\",\n                        \"grammar_errors\": \"\",\n                        \"hash\": \"963447f82a3b0aac633ccd4f327c62f5\",\n                        \"response_time\": 0.511,\n                        \"last_modified\": \"\",\n                        \"redirect_url\": \"\",\n                        \"redirect_type\": \"\",\n                        \"cookies\": \"\",\n                        \"language\": \"en\",\n                        \"http_version\": 1.1,\n                        \"mobile_alternate_link\": \"\",\n                        \"url_encoded_address\": \"https://getspike.ai/blog/beyond-instinct-the-operating-system-for-modern-marketing-teams/\",\n                        \"crawl_timestamp\": \"2025-12-17 18:59:48\",\n                        \"_source_worksheet\": \"internal_all\"\n                    },\n                    {\n                        \"address\": \"https://getspike.ai/blog/is-your-martech-stack-obsolete-the-business-case-for-autonomous-ai-tools/\",\n                        \"content_type\": \"text/html; charset=utf-8\",\n                        \"status_code\": 200,\n                        \"status\": \"OK\",\n                        \"title_1\": \"Is Your Martech Stack Obsolete? The Business Case for Autonomous AI Tools\",\n                        \"title_1_length\": 73,\n                        \"title_1_pixel_width\": 689,\n                        \"meta_description_1\": \"\",\n                        \"meta_description_1_length\": 0,\n                        \"meta_description_1_pixel_width\": 0,\n                        \"meta_keywords_1\": \"\",\n                        \"meta_keywords_1_length\": 0,\n                        \"h1_1\": \"Is Your Martech Stack Obsolete? The Business Case for Autonomous AI Tools\",\n                        \"h1_1_length\": 73,\n                        \"h2_1\": \"Read more\",\n                        \"h2_1_length\": 9,\n                        \"h2_2\": \"The Marketing AGI Frontier\",\n                        \"h2_2_length\": 26,\n                        \"meta_robots_1\": \"\",\n                        \"x_robots_tag_1\": \"\",\n                        \"meta_refresh_1\": \"\",\n                        \"canonical_link_element_1\": \"https://getspike.ai/blog/is-your-martech-stack-obsolete-the-business-case-for-autonomous-ai-tools/\",\n                        \"rel=\\\"next\\\"_1\": \"\",\n                        \"rel=\\\"prev\\\"_1\": \"\",\n                        \"http_rel=\\\"next\\\"_1\": \"\",\n                        \"http_rel=\\\"prev\\\"_1\": \"\",\n                        \"amphtml_link_element\": \"\",\n                        \"size_(bytes)\": 32787,\n                        \"transferred_(bytes)\": 10282,\n                        \"total_transferred_(bytes)\": 10282,\n                        \"co2_(mg)\": 4.004,\n                        \"carbon_rating\": \"\",\n                        \"word_count\": 1190,\n                        \"sentence_count\": 196,\n                        \"average_words_per_sentence\": 6.071,\n                        \"flesch_reading_ease_score\": 78.038,\n                        \"readability\": \"Fairly Easy\",\n                        \"text_ratio\": 25.153,\n                        \"crawl_depth\": 2,\n                        \"folder_depth\": 2,\n                        \"link_score\": \"\",\n                        \"inlinks\": 12,\n                        \"unique_inlinks\": 11,\n                        \"unique_js_inlinks\": 0,\n                        \"%_of_total\": 52.38,\n                        \"outlinks\": 11,\n                        \"unique_outlinks\": 9,\n                        \"unique_js_outlinks\": 0,\n                        \"external_outlinks\": 2,\n                        \"unique_external_outlinks\": 2,\n                        \"unique_external_js_outlinks\": 0,\n                        \"closest_similarity_match\": \"\",\n                        \"no._near_duplicates\": \"\",\n                        \"spelling_errors\": \"\",\n                        \"grammar_errors\": \"\",\n                        \"hash\": \"2fecf412cdeec06a6be9184ad8196b00\",\n                        \"response_time\": 0.329,\n                        \"last_modified\": \"\",\n                        \"redirect_url\": \"\",\n                        \"redirect_type\": \"\",\n                        \"cookies\": \"\",\n                        \"language\": \"en\",\n                        \"http_version\": 1.1,\n                        \"mobile_alternate_link\": \"\",\n                        \"url_encoded_address\": \"https://getspike.ai/blog/is-your-martech-stack-obsolete-the-business-case-for-autonomous-ai-tools/\",\n                        \"crawl_timestamp\": \"2025-12-17 18:59:50\",\n                        \"_source_worksheet\": \"internal_all\"\n                    },\n                    {\n                        \"address\": \"https://getspike.ai/blog/beyond-a-b-testing-how-continuous-optimization-drives-24-7-growth/\",\n                        \"content_type\": \"text/html; charset=utf-8\",\n                        \"status_code\": 200,\n                        \"status\": \"OK\",\n                        \"title_1\": \"Beyond A/B Testing: How Continuous Optimization Drives 24/7 Growth\",\n                        \"title_1_length\": 66,\n                        \"title_1_pixel_width\": 628,\n                        \"meta_description_1\": \"\",\n                        \"meta_description_1_length\": 0,\n                        \"meta_description_1_pixel_width\": 0,\n                        \"meta_keywords_1\": \"\",\n                        \"meta_keywords_1_length\": 0,\n                        \"h1_1\": \"Beyond A/B Testing: How Continuous Optimization Drives 24/7 Growth\",\n                        \"h1_1_length\": 66,\n                        \"h2_1\": \"Read more\",\n                        \"h2_1_length\": 9,\n                        \"h2_2\": \"The Marketing AGI Frontier\",\n                        \"h2_2_length\": 26,\n                        \"meta_robots_1\": \"\",\n                        \"x_robots_tag_1\": \"\",\n                        \"meta_refresh_1\": \"\",\n                        \"canonical_link_element_1\": \"https://getspike.ai/blog/beyond-a-b-testing-how-continuous-optimization-drives-24-7-growth/\",\n                        \"rel=\\\"next\\\"_1\": \"\",\n                        \"rel=\\\"prev\\\"_1\": \"\",\n                        \"http_rel=\\\"next\\\"_1\": \"\",\n                        \"http_rel=\\\"prev\\\"_1\": \"\",\n                        \"amphtml_link_element\": \"\",\n                        \"size_(bytes)\": 32907,\n                        \"transferred_(bytes)\": 10248,\n                        \"total_transferred_(bytes)\": 10248,\n                        \"co2_(mg)\": 3.991,\n                        \"carbon_rating\": \"\",\n                        \"word_count\": 1187,\n                        \"sentence_count\": 186,\n                        \"average_words_per_sentence\": 6.382,\n                        \"flesch_reading_ease_score\": 70.927,\n                        \"readability\": \"Fairly Easy\",\n                        \"text_ratio\": 25.854,\n                        \"crawl_depth\": 2,\n                        \"folder_depth\": 2,\n                        \"link_score\": \"\",\n                        \"inlinks\": 12,\n                        \"unique_inlinks\": 11,\n                        \"unique_js_inlinks\": 0,\n                        \"%_of_total\": 52.38,\n                        \"outlinks\": 11,\n                        \"unique_outlinks\": 9,\n                        \"unique_js_outlinks\": 0,\n                        \"external_outlinks\": 2,\n                        \"unique_external_outlinks\": 2,\n                        \"unique_external_js_outlinks\": 0,\n                        \"closest_similarity_match\": \"\",\n                        \"no._near_duplicates\": \"\",\n                        \"spelling_errors\": \"\",\n                        \"grammar_errors\": \"\",\n                        \"hash\": \"8467b597e121d987d1e507bba44188de\",\n                        \"response_time\": 0.562,\n                        \"last_modified\": \"\",\n                        \"redirect_url\": \"\",\n                        \"redirect_type\": \"\",\n                        \"cookies\": \"\",\n                        \"language\": \"en\",\n                        \"http_version\": 1.1,\n                        \"mobile_alternate_link\": \"\",\n                        \"url_encoded_address\": \"https://getspike.ai/blog/beyond-a-b-testing-how-continuous-optimization-drives-24-7-growth/\",\n                        \"crawl_timestamp\": \"2025-12-17 18:59:51\",\n                        \"_source_worksheet\": \"internal_all\"\n                    },\n                    {\n                        \"address\": \"https://getspike.ai/blog/magi-2/\",\n                        \"content_type\": \"text/html; charset=utf-8\",\n                        \"status_code\": 200,\n                        \"status\": \"OK\",\n                        \"title_1\": \"Meet MAGI: The End of Tool Chaos and the Start of Autonomous Marketing\",\n                        \"title_1_length\": 70,\n                        \"title_1_pixel_width\": 668,\n                        \"meta_description_1\": \"\",\n                        \"meta_description_1_length\": 0,\n                        \"meta_description_1_pixel_width\": 0,\n                        \"meta_keywords_1\": \"\",\n                        \"meta_keywords_1_length\": 0,\n                        \"h1_1\": \"Meet MAGI: The End of Tool Chaos and the Start of Autonomous Marketing\",\n                        \"h1_1_length\": 70,\n                        \"h2_1\": \"Read more\",\n                        \"h2_1_length\": 9,\n                        \"h2_2\": \"The Marketing AGI Frontier\",\n                        \"h2_2_length\": 26,\n                        \"meta_robots_1\": \"\",\n                        \"x_robots_tag_1\": \"\",\n                        \"meta_refresh_1\": \"\",\n                        \"canonical_link_element_1\": \"https://getspike.ai/blog/magi-2/\",\n                        \"rel=\\\"next\\\"_1\": \"\",\n                        \"rel=\\\"prev\\\"_1\": \"\",\n                        \"http_rel=\\\"next\\\"_1\": \"\",\n                        \"http_rel=\\\"prev\\\"_1\": \"\",\n                        \"amphtml_link_element\": \"\",\n                        \"size_(bytes)\": 34187,\n                        \"transferred_(bytes)\": 10730,\n                        \"total_transferred_(bytes)\": 10730,\n                        \"co2_(mg)\": 4.179,\n                        \"carbon_rating\": \"\",\n                        \"word_count\": 1221,\n                        \"sentence_count\": 183,\n                        \"average_words_per_sentence\": 6.672,\n                        \"flesch_reading_ease_score\": 64.121,\n                        \"readability\": \"Normal\",\n                        \"text_ratio\": 26.305,\n                        \"crawl_depth\": 3,\n                        \"folder_depth\": 2,\n                        \"link_score\": \"\",\n                        \"inlinks\": 7,\n                        \"unique_inlinks\": 6,\n                        \"unique_js_inlinks\": 0,\n                        \"%_of_total\": 28.57,\n                        \"outlinks\": 11,\n                        \"unique_outlinks\": 9,\n                        \"unique_js_outlinks\": 0,\n                        \"external_outlinks\": 2,\n                        \"unique_external_outlinks\": 2,\n                        \"unique_external_js_outlinks\": 0,\n                        \"closest_similarity_match\": \"\",\n                        \"no._near_duplicates\": \"\",\n                        \"spelling_errors\": \"\",\n                        \"grammar_errors\": \"\",\n                        \"hash\": \"ff8291e37abddff058e918d6d3695e07\",\n                        \"response_time\": 0.291,\n                        \"last_modified\": \"\",\n                        \"redirect_url\": \"\",\n                        \"redirect_type\": \"\",\n                        \"cookies\": \"\",\n                        \"language\": \"en\",\n                        \"http_version\": 1.1,\n                        \"mobile_alternate_link\": \"\",\n                        \"url_encoded_address\": \"https://getspike.ai/blog/magi-2/\",\n                        \"crawl_timestamp\": \"2025-12-17 18:59:54\",\n                        \"_source_worksheet\": \"internal_all\"\n                    },\n                    {\n                        \"address\": \"https://getspike.ai/blog/why-traditional-cro-is-failing-and-what-self-driving-marketing-solves/\",\n                        \"content_type\": \"text/html; charset=utf-8\",\n                        \"status_code\": 200,\n                        \"status\": \"OK\",\n                        \"title_1\": \"Why Traditional CRO Is Failing—and What Self-Driving Marketing Solves\",\n                        \"title_1_length\": 69,\n                        \"title_1_pixel_width\": 635,\n                        \"meta_description_1\": \"\",\n                        \"meta_description_1_length\": 0,\n                        \"meta_description_1_pixel_width\": 0,\n                        \"meta_keywords_1\": \"\",\n                        \"meta_keywords_1_length\": 0,\n                        \"h1_1\": \"Why Traditional CRO Is Failing—and What Self-Driving Marketing Solves\",\n                        \"h1_1_length\": 69,\n                        \"h2_1\": \"Read more\",\n                        \"h2_1_length\": 9,\n                        \"h2_2\": \"The Marketing AGI Frontier\",\n                        \"h2_2_length\": 26,\n                        \"meta_robots_1\": \"\",\n                        \"x_robots_tag_1\": \"\",\n                        \"meta_refresh_1\": \"\",\n                        \"canonical_link_element_1\": \"https://getspike.ai/blog/why-traditional-cro-is-failing-and-what-self-driving-marketing-solves/\",\n                        \"rel=\\\"next\\\"_1\": \"\",\n                        \"rel=\\\"prev\\\"_1\": \"\",\n                        \"http_rel=\\\"next\\\"_1\": \"\",\n                        \"http_rel=\\\"prev\\\"_1\": \"\",\n                        \"amphtml_link_element\": \"\",\n                        \"size_(bytes)\": 34593,\n                        \"transferred_(bytes)\": 10677,\n                        \"total_transferred_(bytes)\": 10677,\n                        \"co2_(mg)\": 4.158,\n                        \"carbon_rating\": \"\",\n                        \"word_count\": 1195,\n                        \"sentence_count\": 180,\n                        \"average_words_per_sentence\": 6.639,\n                        \"flesch_reading_ease_score\": 64.595,\n                        \"readability\": \"Normal\",\n                        \"text_ratio\": 25.622,\n                        \"crawl_depth\": 5,\n                        \"folder_depth\": 2,\n                        \"link_score\": \"\",\n                        \"inlinks\": 4,\n                        \"unique_inlinks\": 3,\n                        \"unique_js_inlinks\": 0,\n                        \"%_of_total\": 14.29,\n                        \"outlinks\": 12,\n                        \"unique_outlinks\": 10,\n                        \"unique_js_outlinks\": 0,\n                        \"external_outlinks\": 2,\n                        \"unique_external_outlinks\": 2,\n                        \"unique_external_js_outlinks\": 0,\n                        \"closest_similarity_match\": \"\",\n                        \"no._near_duplicates\": \"\",\n                        \"spelling_errors\": \"\",\n                        \"grammar_errors\": \"\",\n                        \"hash\": \"65e2104993e496853cf8e46bf82615b3\",\n                        \"response_time\": 0.461,\n                        \"last_modified\": \"\",\n                        \"redirect_url\": \"\",\n                        \"redirect_type\": \"\",\n                        \"cookies\": \"\",\n                        \"language\": \"en\",\n                        \"http_version\": 1.1,\n                        \"mobile_alternate_link\": \"\",\n                        \"url_encoded_address\": \"https://getspike.ai/blog/why-traditional-cro-is-failing-and-what-self-driving-marketing-solves/\",\n                        \"crawl_timestamp\": \"2025-12-17 18:59:54\",\n                        \"_source_worksheet\": \"internal_all\"\n                    },\n                    {\n                        \"address\": \"https://getspike.ai/blog/12-days-of-magi-how-spike-ai-became-the-first-truly-autonomous-marketing-engine/\",\n                        \"content_type\": \"text/html; charset=utf-8\",\n                        \"status_code\": 200,\n                        \"status\": \"OK\",\n                        \"title_1\": \"12 Days of MAGI: How Spike AI Became the First Truly Autonomous Marketing Engine\",\n                        \"title_1_length\": 80,\n                        \"title_1_pixel_width\": 759,\n                        \"meta_description_1\": \"\",\n                        \"meta_description_1_length\": 0,\n                        \"meta_description_1_pixel_width\": 0,\n                        \"meta_keywords_1\": \"\",\n                        \"meta_keywords_1_length\": 0,\n                        \"h1_1\": \"12 Days of MAGI: How Spike AI Became the First Truly Autonomous Marketing Engine\",\n                        \"h1_1_length\": 80,\n                        \"h2_1\": \"Read more\",\n                        \"h2_1_length\": 9,\n                        \"h2_2\": \"The Marketing AGI Frontier\",\n                        \"h2_2_length\": 26,\n                        \"meta_robots_1\": \"\",\n                        \"x_robots_tag_1\": \"\",\n                        \"meta_refresh_1\": \"\",\n                        \"canonical_link_element_1\": \"https://getspike.ai/blog/12-days-of-magi-how-spike-ai-became-the-first-truly-autonomous-marketing-engine/\",\n                        \"rel=\\\"next\\\"_1\": \"\",\n                        \"rel=\\\"prev\\\"_1\": \"\",\n                        \"http_rel=\\\"next\\\"_1\": \"\",\n                        \"http_rel=\\\"prev\\\"_1\": \"\",\n                        \"amphtml_link_element\": \"\",\n                        \"size_(bytes)\": 30113,\n                        \"transferred_(bytes)\": 9059,\n                        \"total_transferred_(bytes)\": 9059,\n                        \"co2_(mg)\": 3.528,\n                        \"carbon_rating\": \"\",\n                        \"word_count\": 787,\n                        \"sentence_count\": 122,\n                        \"average_words_per_sentence\": 6.451,\n                        \"flesch_reading_ease_score\": 46.674,\n                        \"readability\": \"Hard\",\n                        \"text_ratio\": 21.084,\n                        \"crawl_depth\": 5,\n                        \"folder_depth\": 2,\n                        \"link_score\": \"\",\n                        \"inlinks\": 4,\n                        \"unique_inlinks\": 3,\n                        \"unique_js_inlinks\": 0,\n                        \"%_of_total\": 14.29,\n                        \"outlinks\": 11,\n                        \"unique_outlinks\": 9,\n                        \"unique_js_outlinks\": 0,\n                        \"external_outlinks\": 1,\n                        \"unique_external_outlinks\": 1,\n                        \"unique_external_js_outlinks\": 0,\n                        \"closest_similarity_match\": \"\",\n                        \"no._near_duplicates\": \"\",\n                        \"spelling_errors\": \"\",\n                        \"grammar_errors\": \"\",\n                        \"hash\": \"fac6f2e8be820267b2df23d50b9913f6\",\n                        \"response_time\": 0.301,\n                        \"last_modified\": \"\",\n                        \"redirect_url\": \"\",\n                        \"redirect_type\": \"\",\n                        \"cookies\": \"\",\n                        \"language\": \"en\",\n                        \"http_version\": 1.1,\n                        \"mobile_alternate_link\": \"\",\n                        \"url_encoded_address\": \"https://getspike.ai/blog/12-days-of-magi-how-spike-ai-became-the-first-truly-autonomous-marketing-engine/\",\n                        \"crawl_timestamp\": \"2025-12-17 18:59:55\",\n                        \"_source_worksheet\": \"internal_all\"\n                    }\n                ],\n                \"sample\": [\n                    {\n                        \"address\": \"https://getspike.ai/blog/beyond-instinct-the-operating-system-for-modern-marketing-teams/\",\n                        \"content_type\": \"text/html; charset=utf-8\",\n                        \"status_code\": 200,\n                        \"status\": \"OK\",\n                        \"title_1\": \"Beyond Instinct: The Operating System for Modern Marketing Teams\",\n                        \"title_1_length\": 64,\n                        \"title_1_pixel_width\": 610,\n                        \"meta_description_1\": \"\",\n                        \"meta_description_1_length\": 0,\n                        \"meta_description_1_pixel_width\": 0,\n                        \"meta_keywords_1\": \"\",\n                        \"meta_keywords_1_length\": 0,\n                        \"h1_1\": \"Beyond Instinct: The Operating System for Modern Marketing Teams\",\n                        \"h1_1_length\": 64,\n                        \"h2_1\": \"Read more\",\n                        \"h2_1_length\": 9,\n                        \"h2_2\": \"The Marketing AGI Frontier\",\n                        \"h2_2_length\": 26,\n                        \"meta_robots_1\": \"\",\n                        \"x_robots_tag_1\": \"\",\n                        \"meta_refresh_1\": \"\",\n                        \"canonical_link_element_1\": \"https://getspike.ai/blog/beyond-instinct-the-operating-system-for-modern-marketing-teams/\",\n                        \"rel=\\\"next\\\"_1\": \"\",\n                        \"rel=\\\"prev\\\"_1\": \"\",\n                        \"http_rel=\\\"next\\\"_1\": \"\",\n                        \"http_rel=\\\"prev\\\"_1\": \"\",\n                        \"amphtml_link_element\": \"\",\n                        \"size_(bytes)\": 31232,\n                        \"transferred_(bytes)\": 9496,\n                        \"total_transferred_(bytes)\": 9496,\n                        \"co2_(mg)\": 3.698,\n                        \"carbon_rating\": \"\",\n                        \"word_count\": 908,\n                        \"sentence_count\": 155,\n                        \"average_words_per_sentence\": 5.858,\n                        \"flesch_reading_ease_score\": 74.455,\n                        \"readability\": \"Fairly Easy\",\n                        \"text_ratio\": 21.343,\n                        \"crawl_depth\": 1,\n                        \"folder_depth\": 2,\n                        \"link_score\": \"\",\n                        \"inlinks\": 18,\n                        \"unique_inlinks\": 17,\n                        \"unique_js_inlinks\": 0,\n                        \"%_of_total\": 80.95,\n                        \"outlinks\": 12,\n                        \"unique_outlinks\": 9,\n                        \"unique_js_outlinks\": 0,\n                        \"external_outlinks\": 1,\n                        \"unique_external_outlinks\": 1,\n                        \"unique_external_js_outlinks\": 0,\n                        \"closest_similarity_match\": \"\",\n                        \"no._near_duplicates\": \"\",\n                        \"spelling_errors\": \"\",\n                        \"grammar_errors\": \"\",\n                        \"hash\": \"963447f82a3b0aac633ccd4f327c62f5\",\n                        \"response_time\": 0.511,\n                        \"last_modified\": \"\",\n                        \"redirect_url\": \"\",\n                        \"redirect_type\": \"\",\n                        \"cookies\": \"\",\n                        \"language\": \"en\",\n                        \"http_version\": 1.1,\n                        \"mobile_alternate_link\": \"\",\n                        \"url_encoded_address\": \"https://getspike.ai/blog/beyond-instinct-the-operating-system-for-modern-marketing-teams/\",\n                        \"crawl_timestamp\": \"2025-12-17 18:59:48\",\n                        \"_source_worksheet\": \"internal_all\"\n                    },\n                    {\n                        \"address\": \"https://getspike.ai/blog/is-your-martech-stack-obsolete-the-business-case-for-autonomous-ai-tools/\",\n                        \"content_type\": \"text/html; charset=utf-8\",\n                        \"status_code\": 200,\n                        \"status\": \"OK\",\n                        \"title_1\": \"Is Your Martech Stack Obsolete? The Business Case for Autonomous AI Tools\",\n                        \"title_1_length\": 73,\n                        \"title_1_pixel_width\": 689,\n                        \"meta_description_1\": \"\",\n                        \"meta_description_1_length\": 0,\n                        \"meta_description_1_pixel_width\": 0,\n                        \"meta_keywords_1\": \"\",\n                        \"meta_keywords_1_length\": 0,\n                        \"h1_1\": \"Is Your Martech Stack Obsolete? The Business Case for Autonomous AI Tools\",\n                        \"h1_1_length\": 73,\n                        \"h2_1\": \"Read more\",\n                        \"h2_1_length\": 9,\n                        \"h2_2\": \"The Marketing AGI Frontier\",\n                        \"h2_2_length\": 26,\n                        \"meta_robots_1\": \"\",\n                        \"x_robots_tag_1\": \"\",\n                        \"meta_refresh_1\": \"\",\n                        \"canonical_link_element_1\": \"https://getspike.ai/blog/is-your-martech-stack-obsolete-the-business-case-for-autonomous-ai-tools/\",\n                        \"rel=\\\"next\\\"_1\": \"\",\n                        \"rel=\\\"prev\\\"_1\": \"\",\n                        \"http_rel=\\\"next\\\"_1\": \"\",\n                        \"http_rel=\\\"prev\\\"_1\": \"\",\n                        \"amphtml_link_element\": \"\",\n                        \"size_(bytes)\": 32787,\n                        \"transferred_(bytes)\": 10282,\n                        \"total_transferred_(bytes)\": 10282,\n                        \"co2_(mg)\": 4.004,\n                        \"carbon_rating\": \"\",\n                        \"word_count\": 1190,\n                        \"sentence_count\": 196,\n                        \"average_words_per_sentence\": 6.071,\n                        \"flesch_reading_ease_score\": 78.038,\n                        \"readability\": \"Fairly Easy\",\n                        \"text_ratio\": 25.153,\n                        \"crawl_depth\": 2,\n                        \"folder_depth\": 2,\n                        \"link_score\": \"\",\n                        \"inlinks\": 12,\n                        \"unique_inlinks\": 11,\n                        \"unique_js_inlinks\": 0,\n                        \"%_of_total\": 52.38,\n                        \"outlinks\": 11,\n                        \"unique_outlinks\": 9,\n                        \"unique_js_outlinks\": 0,\n                        \"external_outlinks\": 2,\n                        \"unique_external_outlinks\": 2,\n                        \"unique_external_js_outlinks\": 0,\n                        \"closest_similarity_match\": \"\",\n                        \"no._near_duplicates\": \"\",\n                        \"spelling_errors\": \"\",\n                        \"grammar_errors\": \"\",\n                        \"hash\": \"2fecf412cdeec06a6be9184ad8196b00\",\n                        \"response_time\": 0.329,\n                        \"last_modified\": \"\",\n                        \"redirect_url\": \"\",\n                        \"redirect_type\": \"\",\n                        \"cookies\": \"\",\n                        \"language\": \"en\",\n                        \"http_version\": 1.1,\n                        \"mobile_alternate_link\": \"\",\n                        \"url_encoded_address\": \"https://getspike.ai/blog/is-your-martech-stack-obsolete-the-business-case-for-autonomous-ai-tools/\",\n                        \"crawl_timestamp\": \"2025-12-17 18:59:50\",\n                        \"_source_worksheet\": \"internal_all\"\n                    },\n                    {\n                        \"address\": \"https://getspike.ai/blog/beyond-a-b-testing-how-continuous-optimization-drives-24-7-growth/\",\n                        \"content_type\": \"text/html; charset=utf-8\",\n                        \"status_code\": 200,\n                        \"status\": \"OK\",\n                        \"title_1\": \"Beyond A/B Testing: How Continuous Optimization Drives 24/7 Growth\",\n                        \"title_1_length\": 66,\n                        \"title_1_pixel_width\": 628,\n                        \"meta_description_1\": \"\",\n                        \"meta_description_1_length\": 0,\n                        \"meta_description_1_pixel_width\": 0,\n                        \"meta_keywords_1\": \"\",\n                        \"meta_keywords_1_length\": 0,\n                        \"h1_1\": \"Beyond A/B Testing: How Continuous Optimization Drives 24/7 Growth\",\n                        \"h1_1_length\": 66,\n                        \"h2_1\": \"Read more\",\n                        \"h2_1_length\": 9,\n                        \"h2_2\": \"The Marketing AGI Frontier\",\n                        \"h2_2_length\": 26,\n                        \"meta_robots_1\": \"\",\n                        \"x_robots_tag_1\": \"\",\n                        \"meta_refresh_1\": \"\",\n                        \"canonical_link_element_1\": \"https://getspike.ai/blog/beyond-a-b-testing-how-continuous-optimization-drives-24-7-growth/\",\n                        \"rel=\\\"next\\\"_1\": \"\",\n                        \"rel=\\\"prev\\\"_1\": \"\",\n                        \"http_rel=\\\"next\\\"_1\": \"\",\n                        \"http_rel=\\\"prev\\\"_1\": \"\",\n                        \"amphtml_link_element\": \"\",\n                        \"size_(bytes)\": 32907,\n                        \"transferred_(bytes)\": 10248,\n                        \"total_transferred_(bytes)\": 10248,\n                        \"co2_(mg)\": 3.991,\n                        \"carbon_rating\": \"\",\n                        \"word_count\": 1187,\n                        \"sentence_count\": 186,\n                        \"average_words_per_sentence\": 6.382,\n                        \"flesch_reading_ease_score\": 70.927,\n                        \"readability\": \"Fairly Easy\",\n                        \"text_ratio\": 25.854,\n                        \"crawl_depth\": 2,\n                        \"folder_depth\": 2,\n                        \"link_score\": \"\",\n                        \"inlinks\": 12,\n                        \"unique_inlinks\": 11,\n                        \"unique_js_inlinks\": 0,\n                        \"%_of_total\": 52.38,\n                        \"outlinks\": 11,\n                        \"unique_outlinks\": 9,\n                        \"unique_js_outlinks\": 0,\n                        \"external_outlinks\": 2,\n                        \"unique_external_outlinks\": 2,\n                        \"unique_external_js_outlinks\": 0,\n                        \"closest_similarity_match\": \"\",\n                        \"no._near_duplicates\": \"\",\n                        \"spelling_errors\": \"\",\n                        \"grammar_errors\": \"\",\n                        \"hash\": \"8467b597e121d987d1e507bba44188de\",\n                        \"response_time\": 0.562,\n                        \"last_modified\": \"\",\n                        \"redirect_url\": \"\",\n                        \"redirect_type\": \"\",\n                        \"cookies\": \"\",\n                        \"language\": \"en\",\n                        \"http_version\": 1.1,\n                        \"mobile_alternate_link\": \"\",\n                        \"url_encoded_address\": \"https://getspike.ai/blog/beyond-a-b-testing-how-continuous-optimization-drives-24-7-growth/\",\n                        \"crawl_timestamp\": \"2025-12-17 18:59:51\",\n                        \"_source_worksheet\": \"internal_all\"\n                    },\n                    {\n                        \"address\": \"https://getspike.ai/blog/magi-2/\",\n                        \"content_type\": \"text/html; charset=utf-8\",\n                        \"status_code\": 200,\n                        \"status\": \"OK\",\n                        \"title_1\": \"Meet MAGI: The End of Tool Chaos and the Start of Autonomous Marketing\",\n                        \"title_1_length\": 70,\n                        \"title_1_pixel_width\": 668,\n                        \"meta_description_1\": \"\",\n                        \"meta_description_1_length\": 0,\n                        \"meta_description_1_pixel_width\": 0,\n                        \"meta_keywords_1\": \"\",\n                        \"meta_keywords_1_length\": 0,\n                        \"h1_1\": \"Meet MAGI: The End of Tool Chaos and the Start of Autonomous Marketing\",\n                        \"h1_1_length\": 70,\n                        \"h2_1\": \"Read more\",\n                        \"h2_1_length\": 9,\n                        \"h2_2\": \"The Marketing AGI Frontier\",\n                        \"h2_2_length\": 26,\n                        \"meta_robots_1\": \"\",\n                        \"x_robots_tag_1\": \"\",\n                        \"meta_refresh_1\": \"\",\n                        \"canonical_link_element_1\": \"https://getspike.ai/blog/magi-2/\",\n                        \"rel=\\\"next\\\"_1\": \"\",\n                        \"rel=\\\"prev\\\"_1\": \"\",\n                        \"http_rel=\\\"next\\\"_1\": \"\",\n                        \"http_rel=\\\"prev\\\"_1\": \"\",\n                        \"amphtml_link_element\": \"\",\n                        \"size_(bytes)\": 34187,\n                        \"transferred_(bytes)\": 10730,\n                        \"total_transferred_(bytes)\": 10730,\n                        \"co2_(mg)\": 4.179,\n                        \"carbon_rating\": \"\",\n                        \"word_count\": 1221,\n                        \"sentence_count\": 183,\n                        \"average_words_per_sentence\": 6.672,\n                        \"flesch_reading_ease_score\": 64.121,\n                        \"readability\": \"Normal\",\n                        \"text_ratio\": 26.305,\n                        \"crawl_depth\": 3,\n                        \"folder_depth\": 2,\n                        \"link_score\": \"\",\n                        \"inlinks\": 7,\n                        \"unique_inlinks\": 6,\n                        \"unique_js_inlinks\": 0,\n                        \"%_of_total\": 28.57,\n                        \"outlinks\": 11,\n                        \"unique_outlinks\": 9,\n                        \"unique_js_outlinks\": 0,\n                        \"external_outlinks\": 2,\n                        \"unique_external_outlinks\": 2,\n                        \"unique_external_js_outlinks\": 0,\n                        \"closest_similarity_match\": \"\",\n                        \"no._near_duplicates\": \"\",\n                        \"spelling_errors\": \"\",\n                        \"grammar_errors\": \"\",\n                        \"hash\": \"ff8291e37abddff058e918d6d3695e07\",\n                        \"response_time\": 0.291,\n                        \"last_modified\": \"\",\n                        \"redirect_url\": \"\",\n                        \"redirect_type\": \"\",\n                        \"cookies\": \"\",\n                        \"language\": \"en\",\n                        \"http_version\": 1.1,\n                        \"mobile_alternate_link\": \"\",\n                        \"url_encoded_address\": \"https://getspike.ai/blog/magi-2/\",\n                        \"crawl_timestamp\": \"2025-12-17 18:59:54\",\n                        \"_source_worksheet\": \"internal_all\"\n                    },\n                    {\n                        \"address\": \"https://getspike.ai/blog/why-traditional-cro-is-failing-and-what-self-driving-marketing-solves/\",\n                        \"content_type\": \"text/html; charset=utf-8\",\n                        \"status_code\": 200,\n                        \"status\": \"OK\",\n                        \"title_1\": \"Why Traditional CRO Is Failing—and What Self-Driving Marketing Solves\",\n                        \"title_1_length\": 69,\n                        \"title_1_pixel_width\": 635,\n                        \"meta_description_1\": \"\",\n                        \"meta_description_1_length\": 0,\n                        \"meta_description_1_pixel_width\": 0,\n                        \"meta_keywords_1\": \"\",\n                        \"meta_keywords_1_length\": 0,\n                        \"h1_1\": \"Why Traditional CRO Is Failing—and What Self-Driving Marketing Solves\",\n                        \"h1_1_length\": 69,\n                        \"h2_1\": \"Read more\",\n                        \"h2_1_length\": 9,\n                        \"h2_2\": \"The Marketing AGI Frontier\",\n                        \"h2_2_length\": 26,\n                        \"meta_robots_1\": \"\",\n                        \"x_robots_tag_1\": \"\",\n                        \"meta_refresh_1\": \"\",\n                        \"canonical_link_element_1\": \"https://getspike.ai/blog/why-traditional-cro-is-failing-and-what-self-driving-marketing-solves/\",\n                        \"rel=\\\"next\\\"_1\": \"\",\n                        \"rel=\\\"prev\\\"_1\": \"\",\n                        \"http_rel=\\\"next\\\"_1\": \"\",\n                        \"http_rel=\\\"prev\\\"_1\": \"\",\n                        \"amphtml_link_element\": \"\",\n                        \"size_(bytes)\": 34593,\n                        \"transferred_(bytes)\": 10677,\n                        \"total_transferred_(bytes)\": 10677,\n                        \"co2_(mg)\": 4.158,\n                        \"carbon_rating\": \"\",\n                        \"word_count\": 1195,\n                        \"sentence_count\": 180,\n                        \"average_words_per_sentence\": 6.639,\n                        \"flesch_reading_ease_score\": 64.595,\n                        \"readability\": \"Normal\",\n                        \"text_ratio\": 25.622,\n                        \"crawl_depth\": 5,\n                        \"folder_depth\": 2,\n                        \"link_score\": \"\",\n                        \"inlinks\": 4,\n                        \"unique_inlinks\": 3,\n                        \"unique_js_inlinks\": 0,\n                        \"%_of_total\": 14.29,\n                        \"outlinks\": 12,\n                        \"unique_outlinks\": 10,\n                        \"unique_js_outlinks\": 0,\n                        \"external_outlinks\": 2,\n                        \"unique_external_outlinks\": 2,\n                        \"unique_external_js_outlinks\": 0,\n                        \"closest_similarity_match\": \"\",\n                        \"no._near_duplicates\": \"\",\n                        \"spelling_errors\": \"\",\n                        \"grammar_errors\": \"\",\n                        \"hash\": \"65e2104993e496853cf8e46bf82615b3\",\n                        \"response_time\": 0.461,\n                        \"last_modified\": \"\",\n                        \"redirect_url\": \"\",\n                        \"redirect_type\": \"\",\n                        \"cookies\": \"\",\n                        \"language\": \"en\",\n                        \"http_version\": 1.1,\n                        \"mobile_alternate_link\": \"\",\n                        \"url_encoded_address\": \"https://getspike.ai/blog/why-traditional-cro-is-failing-and-what-self-driving-marketing-solves/\",\n                        \"crawl_timestamp\": \"2025-12-17 18:59:54\",\n                        \"_source_worksheet\": \"internal_all\"\n                    }\n                ]\n            }\n        ],\n        \"row_count\": 103\n    },\n    \"metadata\": {\n        \"routing\": {\n            \"detected_intent\": \"SEO\",\n            \"query_type\": \"seo_only\",\n            \"has_property_id\": false\n        },\n        \"seo_execution\": {\n            \"columns_available\": [\n                \"address\",\n                \"content_type\",\n                \"status_code\",\n                \"status\",\n                \"title_1\",\n                \"title_1_length\",\n                \"title_1_pixel_width\",\n                \"meta_description_1\",\n                \"meta_description_1_length\",\n                \"meta_description_1_pixel_width\",\n                \"meta_keywords_1\",\n                \"meta_keywords_1_length\",\n                \"h1_1\",\n                \"h1_1_length\",\n                \"h2_1\",\n                \"h2_1_length\",\n                \"h2_2\",\n                \"h2_2_length\",\n                \"meta_robots_1\",\n                \"x_robots_tag_1\",\n                \"meta_refresh_1\",\n                \"canonical_link_element_1\",\n                \"rel=\\\"next\\\"_1\",\n                \"rel=\\\"prev\\\"_1\",\n                \"http_rel=\\\"next\\\"_1\",\n                \"http_rel=\\\"prev\\\"_1\",\n                \"amphtml_link_element\",\n                \"size_(bytes)\",\n                \"transferred_(bytes)\",\n                \"total_transferred_(bytes)\",\n                \"co2_(mg)\",\n                \"carbon_rating\",\n                \"word_count\",\n                \"sentence_count\",\n                \"average_words_per_sentence\",\n                \"flesch_reading_ease_score\",\n                \"readability\",\n                \"text_ratio\",\n                \"crawl_depth\",\n                \"folder_depth\",\n                \"link_score\",\n                \"inlinks\",\n                \"unique_inlinks\",\n                \"unique_js_inlinks\",\n                \"%_of_total\",\n                \"outlinks\",\n                \"unique_outlinks\",\n                \"unique_js_outlinks\",\n                \"external_outlinks\",\n                \"unique_external_outlinks\",\n                \"unique_external_js_outlinks\",\n                \"closest_similarity_match\",\n                \"no._near_duplicates\",\n                \"spelling_errors\",\n                \"grammar_errors\",\n                \"hash\",\n                \"response_time\",\n                \"last_modified\",\n                \"redirect_url\",\n                \"redirect_type\",\n                \"cookies\",\n                \"language\",\n                \"http_version\",\n                \"mobile_alternate_link\",\n                \"url_encoded_address\",\n                \"crawl_timestamp\",\n                \"_source_worksheet\"\n            ],\n            \"total_rows\": 103\n        },\n        \"processing_time_ms\": 33681.66\n    },\n    \"error\": null\n}"
+				},
+				{
+					"name": "3.1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"propertyId\": \"481659673\",\n  \"query\": \"Analyze traffic patterns and overall SEO health to identify areas of improvement.\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/query",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 19 Dec 2025 01:40:47 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "1631"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"query_type\": \"fusion\",\n    \"answer\": \"Traffic patterns show that `/test.html` has the highest `screenPageViews` at 83 but only 1 `totalUsers`, indicating a potential issue like bot traffic or an unindexed internal page, as it is not present in the SEO data. The `/about` page received 59 `screenPageViews` from 27 `totalUsers`, `/pricing` received 56 `screenPageViews` from 28 `totalUsers`, and the homepage `/` received 47 `screenPageViews` from 26 `totalUsers` over the last 7 days. Overall SEO health indicates that the homepage (`https://getspike.ai/`) and `/pricing` page (`https://getspike.ai/pricing`) have a `statuscode` of 200, relevant `title1` and `metadescription1`, with the homepage having \\\"Fairly Hard\\\" `readability` and `/pricing` having \\\"Fairly Easy\\\" `readability`. The `/about` page (`http://getspike.ai/about`) also has a `statuscode` of 200 but \\\"Hard\\\" `readability`, and there is a problematic 301 redirect for `http://getspike.ai/about` that redirects to itself. Areas for improvement include investigating the `/test.html` traffic anomaly, improving the `readability` of the homepage and `/about` page, and correcting the self-redirect issue for `http://getspike.ai/about`.\",\n    \"answer_type\": \"text\",\n    \"data\": {\n        \"ga4_summary\": {\n            \"row_count\": 4,\n            \"metrics\": [\n                \"screenPageViews\",\n                \"totalUsers\"\n            ],\n            \"dimensions\": [\n                \"pagePath\"\n            ],\n            \"date_range\": {\n                \"start\": \"7daysAgo\",\n                \"end\": \"today\"\n            }\n        },\n        \"seo_summary\": {\n            \"matches_found\": 5\n        }\n    },\n    \"metadata\": {\n        \"routing\": {\n            \"detected_intent\": \"FUSION\",\n            \"query_type\": \"fusion\",\n            \"has_property_id\": true\n        },\n        \"fusion_execution\": {\n            \"ga4_rows\": 4,\n            \"seo_matches\": 5,\n            \"urls_checked\": 4\n        },\n        \"processing_time_ms\": 10915.39\n    },\n    \"error\": null\n}"
+				},
+				{
+					"name": "3.2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"propertyId\": \"481659673\",\n  \"query\": \"Summarize top pages by views and provide an overview of common SEO issues across the site.\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/query",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 19 Dec 2025 01:34:05 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "947"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"query_type\": \"fusion\",\n    \"answer\": \"Top pages by screenPageViews are /test.html with 83, /about with 59, /pricing with 56, and / with 47. Common SEO issues across the site include all 200 statuscode pages having an empty canonicallinkelement1. The http://getspike.ai/about page is listed with both a 200 statuscode and a 301 statuscode redirecting to itself, indicating a potential misconfiguration. Additionally, the readability for https://getspike.ai/ is 'Fairly Hard' and for http://getspike.ai/about is 'Hard'.\",\n    \"answer_type\": \"text\",\n    \"data\": {\n        \"ga4_summary\": {\n            \"row_count\": 4,\n            \"metrics\": [\n                \"screenPageViews\",\n                \"totalUsers\"\n            ],\n            \"dimensions\": [\n                \"pagePath\"\n            ],\n            \"date_range\": {\n                \"start\": \"7daysAgo\",\n                \"end\": \"today\"\n            }\n        },\n        \"seo_summary\": {\n            \"matches_found\": 5\n        }\n    },\n    \"metadata\": {\n        \"routing\": {\n            \"detected_intent\": \"FUSION\",\n            \"query_type\": \"fusion\",\n            \"has_property_id\": true\n        },\n        \"fusion_execution\": {\n            \"ga4_rows\": 4,\n            \"seo_matches\": 5,\n            \"urls_checked\": 4\n        },\n        \"processing_time_ms\": 15896.94\n    },\n    \"error\": null\n}"
+				},
+				{
+					"name": "3.3",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"propertyId\": \"481659673\",\n  \"query\": \"Give each page views and what do you think about their health in JSON format.\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/query",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 19 Dec 2025 01:39:23 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "2744"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"query_type\": \"fusion\",\n    \"answer\": [\n        {\n            \"pagePath\": \"/test.html\",\n            \"screenPageViews\": \"83\",\n            \"health_assessment\": {\n                \"status\": \"No SEO data available for this pagePath.\"\n            }\n        },\n        {\n            \"pagePath\": \"/about\",\n            \"screenPageViews\": \"59\",\n            \"health_assessment\": {\n                \"status_code\": 200,\n                \"readability\": \"Hard\",\n                \"word_count\": 409,\n                \"title_1_length\": 46,\n                \"meta_description_1_length\": 152,\n                \"response_time\": 0.508,\n                \"overall_health\": \"The page is accessible (status_code 200) with a good title and meta description length. The word_count is decent. However, the 'Hard' readability score suggests the content might be difficult for some users, potentially impacting engagement. The response_time is acceptable.\",\n                \"recommendations\": [\n                    \"Simplify the language to improve 'readability' and make the content more accessible to a wider audience.\",\n                    \"Monitor 'response_time' and optimize if it consistently increases.\"\n                ]\n            }\n        },\n        {\n            \"pagePath\": \"/pricing\",\n            \"screenPageViews\": \"56\",\n            \"health_assessment\": {\n                \"status_code\": 200,\n                \"readability\": \"Fairly Easy\",\n                \"word_count\": 585,\n                \"title_1_length\": 38,\n                \"meta_description_1_length\": 163,\n                \"response_time\": 0.585,\n                \"overall_health\": \"This page shows good health. It is accessible (status_code 200), has 'Fairly Easy' readability, and a good 'word_count'. The 'title_1_length' is optimal, and 'meta_description_1_length' is slightly above the recommended maximum but generally acceptable. The 'response_time' is acceptable.\",\n                \"recommendations\": [\n                    \"Consider slightly reducing the 'meta_description_1_length' to be within 155-160 characters for optimal display in search engine results.\",\n                    \"Monitor 'response_time' and optimize if it consistently increases.\"\n                ]\n            }\n        },\n        {\n            \"pagePath\": \"/\",\n            \"screenPageViews\": \"47\",\n            \"health_assessment\": {\n                \"status_code\": 200,\n                \"readability\": \"Fairly Hard\",\n                \"word_count\": 676,\n                \"title_1_length\": 34,\n                \"meta_description_1_length\": 167,\n                \"response_time\": 0.017,\n                \"overall_health\": \"The homepage is accessible (status_code 200) with an excellent 'response_time'. It has a good 'word_count' and optimal 'title_1_length'. However, the 'Fairly Hard' readability could be a barrier for some users. The 'meta_description_1_length' is slightly long.\",\n                \"recommendations\": [\n                    \"Simplify the language to improve 'readability' and make the content more accessible.\",\n                    \"Consider slightly reducing the 'meta_description_1_length' to be within 155-160 characters for optimal display in search engine results.\"\n                ]\n            }\n        }\n    ],\n    \"answer_type\": \"json\",\n    \"data\": {\n        \"ga4_summary\": {\n            \"row_count\": 4,\n            \"metrics\": [\n                \"screenPageViews\",\n                \"totalUsers\"\n            ],\n            \"dimensions\": [\n                \"pagePath\"\n            ],\n            \"date_range\": {\n                \"start\": \"7daysAgo\",\n                \"end\": \"today\"\n            }\n        },\n        \"seo_summary\": {\n            \"matches_found\": 5\n        }\n    },\n    \"metadata\": {\n        \"routing\": {\n            \"detected_intent\": \"FUSION\",\n            \"query_type\": \"fusion\",\n            \"has_property_id\": true\n        },\n        \"fusion_execution\": {\n            \"ga4_rows\": 4,\n            \"seo_matches\": 5,\n            \"urls_checked\": 4\n        },\n        \"processing_time_ms\": 21542.85\n    },\n    \"error\": null\n}"
+				},
+				{
+					"name": "3.4",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"propertyId\": \"481659673\",\n  \"query\": \"Return the top 3 pages by views along with their title tags and indexability status in JSON format.\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/query",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 19 Dec 2025 01:29:09 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "834"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"query_type\": \"fusion\",\n    \"answer\": [\n        {\n            \"pagePath\": \"/test.html\",\n            \"screenPageViews\": \"83\",\n            \"title_1\": \"N/A\",\n            \"indexability_status\": \"Unknown\"\n        },\n        {\n            \"pagePath\": \"/about\",\n            \"screenPageViews\": \"59\",\n            \"title_1\": \"About Spike AI - Revolutionizing B2B Marketing\",\n            \"indexability_status\": \"Indexable\"\n        },\n        {\n            \"pagePath\": \"/pricing\",\n            \"screenPageViews\": \"56\",\n            \"title_1\": \"Spike AI Pricing - Marketing AGI Plans\",\n            \"indexability_status\": \"Indexable\"\n        }\n    ],\n    \"answer_type\": \"json\",\n    \"data\": {\n        \"ga4_summary\": {\n            \"row_count\": 4,\n            \"metrics\": [\n                \"screenPageViews\",\n                \"totalUsers\"\n            ],\n            \"dimensions\": [\n                \"pagePath\"\n            ],\n            \"date_range\": {\n                \"start\": \"7daysAgo\",\n                \"end\": \"today\"\n            }\n        },\n        \"seo_summary\": {\n            \"matches_found\": 5\n        }\n    },\n    \"metadata\": {\n        \"routing\": {\n            \"detected_intent\": \"FUSION\",\n            \"query_type\": \"fusion\",\n            \"has_property_id\": true\n        },\n        \"fusion_execution\": {\n            \"ga4_rows\": 4,\n            \"seo_matches\": 5,\n            \"urls_checked\": 4\n        },\n        \"processing_time_ms\": 21721.69\n    },\n    \"error\": null\n}"
+				},
+				{
+					"name": "3.5",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"propertyId\": \"481659673\",\n  \"query\": \"Hypothetically assume if GA4 returns no data, what can we say about site headlth ?\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/query",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 19 Dec 2025 01:47:37 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "1024"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"query_type\": \"fusion\",\n    \"answer\": \"If GA4 returns no data, based solely on the SEO data, the site appears technically healthy. All crawled pages show a statuscode of 200 (OK) or 301 (Moved Permanently), with fast responsetime metrics like 0.017s for the homepage. Key on-page elements such as title1, metadescription1, and h11 are present for content pages, and the site was recently crawled on 17-12-2025, indicating good crawlability and indexability. Additionally, proper HTTP to HTTPS redirects are in place, as seen with the 301 redirect from http://getspike.ai/ to https://getspike.ai/.\",\n    \"answer_type\": \"text\",\n    \"data\": {\n        \"ga4_summary\": {\n            \"row_count\": 4,\n            \"metrics\": [\n                \"screenPageViews\",\n                \"totalUsers\"\n            ],\n            \"dimensions\": [\n                \"pagePath\"\n            ],\n            \"date_range\": {\n                \"start\": \"7daysAgo\",\n                \"end\": \"today\"\n            }\n        },\n        \"seo_summary\": {\n            \"matches_found\": 5\n        }\n    },\n    \"metadata\": {\n        \"routing\": {\n            \"detected_intent\": \"FUSION\",\n            \"query_type\": \"fusion\",\n            \"has_property_id\": true\n        },\n        \"fusion_execution\": {\n            \"ga4_rows\": 4,\n            \"seo_matches\": 5,\n            \"urls_checked\": 4\n        },\n        \"processing_time_ms\": 9890.94\n    },\n    \"error\": null\n}"
+				},
+				{
+					"name": "3x.1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"propertyId\": \"481659673\",\n  \"query\": \"Which pages are in the top 20% by views but have missing or duplicate meta descriptions? Explain the SEO risk.\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://10.81.52.148:8080/query",
+							"protocol": "http",
+							"host": [
+								"10",
+								"81",
+								"52",
+								"148"
+							],
+							"port": "8080",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 19 Dec 2025 01:20:40 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "1048"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"query_type\": \"fusion\",\n    \"answer\": \"Based on the GA4 data, the page '/test.html' with 83 'screenPageViews' is in the top 20% by 'screenPageViews'. However, the provided SEO data `{'matches': []}` indicates no pages have missing or duplicate meta descriptions. Therefore, no pages in the top 20% by 'screenPageViews' are identified with missing or duplicate meta descriptions in this dataset. The SEO risk of missing or duplicate meta descriptions for high-view pages is a reduction in click-through rates from search results due to generic snippets or search engine confusion, potentially harming organic visibility.\",\n    \"answer_type\": \"text\",\n    \"data\": {\n        \"ga4_summary\": {\n            \"row_count\": 4,\n            \"metrics\": [\n                \"screenPageViews\",\n                \"totalUsers\"\n            ],\n            \"dimensions\": [\n                \"pagePath\"\n            ],\n            \"date_range\": {\n                \"start\": \"7daysAgo\",\n                \"end\": \"today\"\n            }\n        },\n        \"seo_summary\": {\n            \"matches_found\": 0\n        }\n    },\n    \"metadata\": {\n        \"routing\": {\n            \"detected_intent\": \"FUSION\",\n            \"query_type\": \"fusion\",\n            \"has_property_id\": true\n        },\n        \"fusion_execution\": {\n            \"ga4_rows\": 4,\n            \"seo_matches\": 0,\n            \"urls_checked\": 0\n        },\n        \"processing_time_ms\": 13233.88\n    },\n    \"error\": null\n}"
+				}
+			]
+		}
+	]
+}
