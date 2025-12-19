@@ -17,7 +17,7 @@ graph TB
         Router[Query Orchestrator<br/>LangGraph State Machine]
         
         subgraph "LLM Layer"
-            Primary[LiteLLM Proxy<br/>gpt-4]
+            Primary[LiteLLM Proxy<br/>gemini-2.5-flash]
             Fallback[Gemini SDK<br/>gemini-2.5-flash]
             Primary -.fallback.-> Fallback
         end

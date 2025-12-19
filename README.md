@@ -2,7 +2,7 @@
 
 Natural language query interface for Google Analytics 4 (GA4) and SEO data powered by LLMs and LangGraph orchestration.
 
-## 🎯 Overview
+## Overview
 
 Spike AI enables users to query their GA4 analytics and SEO data using natural language. The system intelligently routes queries to the appropriate data sources (GA4, SEO, or both) and returns comprehensive answers.
 
@@ -15,39 +15,13 @@ Spike AI enables users to query their GA4 analytics and SEO data using natural l
 - **GA4 Integration**: Direct connection to Google Analytics 4 Data API
 - **Modular Architecture**: Clean separation of concerns with agents, orchestrator, and API layers
 
-## 🏗️ Architecture
+## Architecture
 
 See [ARCHITECTURE.md](./ARCHITECTURE.md) for detailed architecture diagrams and flow documentation.
 
 ### High-Level Components
 
-```
-┌─────────────┐
-│   Client    │
-└──────┬──────┘
-       │
-       ▼
-┌─────────────────────────────────────┐
-│         FastAPI Server              │
-│  ┌─────────────────────────────┐   │
-│  │     Query Orchestrator      │   │
-│  │      (LangGraph)            │   │
-│  └────────┬────────────────────┘   │
-│           │                         │
-│     ┌─────┴─────┬─────────────┐   │
-│     ▼           ▼             ▼    │
-│  ┌────┐    ┌────┐        ┌──────┐ │
-│  │GA4 │    │SEO │        │Fusion│ │
-│  │Agnt│    │Agnt│        │ Flow │ │
-│  └────┘    └────┘        └──────┘ │
-└─────────────────────────────────────┘
-       │           │
-       ▼           ▼
-   ┌──────┐   ┌────────┐
-   │  GA4 │   │ Sheets │
-   │  API │   │  API   │
-   └──────┘   └────────┘
-```
+![High-Level Architecture](./high-level-components.png)
 
 ### Query Types
 
@@ -55,7 +29,7 @@ See [ARCHITECTURE.md](./ARCHITECTURE.md) for detailed architecture diagrams and 
 2. **SEO Only**: Pure technical SEO queries (status codes, meta tags, indexability)
 3. **Fusion**: Combined queries requiring both GA4 traffic data and SEO technical data
 
-## 📋 Prerequisites
+## Prerequisites
 
 - Python 3.9+
 - Google Cloud Project with GA4 API enabled
@@ -64,7 +38,7 @@ See [ARCHITECTURE.md](./ARCHITECTURE.md) for detailed architecture diagrams and 
 - LiteLLM API key (or OpenAI API key)
 - Gemini API key (for fallback)
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Clone and Setup
 
@@ -88,7 +62,7 @@ Edit `.env` with your credentials:
 LITELLM_API_KEY=your_litellm_key
 LITELLM_BASE_URL=https://your-litellm-proxy.com
 GEMINI_API_KEY=your_gemini_key
-LLM_MODEL=gpt-4
+LLM_MODEL=gemini-2.5-flash
 LLM_FALLBACK_MODEL=gemini-2.5-flash
 
 # Google Cloud / GA4
@@ -133,7 +107,7 @@ curl -X POST http://localhost:8080/query \
   }'
 ```
 
-## 📊 Data Source Integrations
+## Data Source Integrations
 
 ### Google Analytics 4 (GA4)
 
@@ -184,7 +158,7 @@ curl -X POST http://localhost:8080/query \
 - Activates when primary LLM fails
 - No dependency on Vertex AI
 
-## 🎮 Usage Examples
+## Usage Examples
 
 ### GA4 Queries
 
@@ -232,7 +206,7 @@ curl -X POST http://localhost:8080/query \
 }
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 spike-ai/
@@ -263,7 +237,7 @@ spike-ai/
 └── ARCHITECTURE.md       # Detailed architecture documentation
 ```
 
-## 🔧 Development
+## Development
 
 ### Development Mode
 
@@ -285,7 +259,7 @@ kill $(cat spike_ai.pid)
 tail -f spike_ai.log
 ```
 
-## 📝 API Reference
+## API Reference
 
 ### POST /query
 
@@ -336,7 +310,7 @@ Health check endpoint.
 }
 ```
 
-## ⚠️ Assumptions & Limitations
+## Assumptions & Limitations
 
 See [ASSUMPTIONS.md](./ASSUMPTIONS.md) for detailed assumptions and open questions.
 
@@ -356,18 +330,15 @@ See [ASSUMPTIONS.md](./ASSUMPTIONS.md) for detailed assumptions and open questio
 4. **Real-time Data**: GA4 data may have 24-48 hour delay
 5. **Large Datasets**: Performance may degrade with very large SEO datasets (10k+ URLs)
 
-## 🤝 Contributing
+## Contributing
 
 1. Follow the existing code style
 2. Add tests for new features
 3. Update documentation
 4. Use meaningful commit messages
 
-## 📄 License
 
-[Your License Here]
-
-## 🆘 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -387,7 +358,7 @@ See [ASSUMPTIONS.md](./ASSUMPTIONS.md) for detailed assumptions and open questio
 
 Set `LOG_LEVEL=DEBUG` in `.env` for detailed logging.
 
-## 📞 Support
+## Support
 
 For issues and questions:
 - Check [ARCHITECTURE.md](./ARCHITECTURE.md) for system details

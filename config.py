@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     litellm_base_url: Optional[str] = None
     openai_api_key: Optional[str] = None
     gemini_api_key: Optional[str] = None
-    llm_model: str = "gpt-4"
+    llm_model: str = "gemini-2.5-flash"
     llm_fallback_model: str = "gemini-2.5-flash"
     llm_temperature: float = 0.0
     llm_max_tokens: int = 2000

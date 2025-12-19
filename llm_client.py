@@ -201,7 +201,7 @@ class LLMClient:
             kwargs["custom_llm_provider"] = "openai"
         
         # Enable JSON mode if requested (for supported models)
-        if json_mode and ("gpt" in model.lower() or "gemini" in model.lower()):
+        if json_mode and "gemini" in model.lower():
             kwargs["response_format"] = {"type": "json_object"}
         
         endpoint = self.api_base if (use_custom_base and self.api_base) else "gemini-direct"
