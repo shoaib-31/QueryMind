@@ -314,18 +314,13 @@ Output ONLY one word: GA4, SEO, or FUSION"""
             ga4_data = self.ga4_agent.execute_plan(state["property_id"], ga4_plan)
             state["ga4_data"] = ga4_data
             
-            # Extract URLs from dimensions (pagePath is typically the first dimension)
-            # GA4 data format: {"dimensions": ["pagePath"], "rows": [{"dimensions": ["/"], "metrics": [...]}]}
-            dimension_list = ga4_data.get("dimensions", [])
-            pagepath_index = dimension_list.index("pagePath") if "pagePath" in dimension_list else 0
-            
+            # Extract URLs from GA4 rows
+            # GA4 data format: {"rows": [{"pagePath": "/test.html", "screenPageViews": "83", ...}], ...}
             urls = []
             for row in ga4_data.get("rows", []):
-                dimensions = row.get("dimensions", [])
-                if dimensions and len(dimensions) > pagepath_index:
-                    url = dimensions[pagepath_index]
-                    if url:  # Skip empty URLs
-                        urls.append(url)
+                url = row.get("pagePath")
+                if url:  # Skip None or empty URLs
+                    urls.append(url)
             
             logger.info(f"Extracted {len(urls)} URLs from GA4 data")
             
