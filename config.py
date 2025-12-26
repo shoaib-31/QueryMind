@@ -1,5 +1,5 @@
 """
-Configuration management for the Spike AI application.
+Configuration management for the QueryMind application.
 Loads environment variables and provides application settings.
 """
 

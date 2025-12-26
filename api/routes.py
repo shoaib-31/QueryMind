@@ -1,5 +1,5 @@
 """
-API route handlers for Spike AI.
+API route handlers for QueryMind.
 """
 
 from fastapi import APIRouter, HTTPException

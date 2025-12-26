@@ -476,7 +476,7 @@ CRITICAL RULES:
 - If data looks limited (e.g., only 1 row, or suspicious values), mention it
 - Use the EXACT metric names from the data, do not translate or rename them
 - Format ALL dates as dd-mm-yyyy (e.g., 15-12-2024) regardless of input format
-- Example good format: "Found 3 pages with HTTP: getspike.ai, getspike.ai/about, getspike.ai/blog"
+- Example good format: "Found 3 pages with HTTP: example.com, example.com/about, example.com/blog"
 - Example BAD format: "Found 3 pages:\\n* page1\\n* page2" (never do this)"""
         
         try:

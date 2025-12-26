@@ -1,10 +1,12 @@
-# Spike AI - Analytics & SEO Query API
+# QueryMind - Analytics & SEO Query API
 
 Natural language query interface for Google Analytics 4 (GA4) and SEO data powered by LLMs and LangGraph orchestration.
 
+> Originally built for the [Spike AI Hackathon](https://spike.ai).
+
 ## Overview
 
-Spike AI enables users to query their GA4 analytics and SEO data using natural language. The system intelligently routes queries to the appropriate data sources (GA4, SEO, or both) and returns comprehensive answers.
+QueryMind enables users to query their GA4 analytics and SEO data using natural language. The system intelligently routes queries to the appropriate data sources (GA4, SEO, or both) and returns comprehensive answers.
 
 ### Key Features
 
@@ -44,7 +46,7 @@ See [ARCHITECTURE.md](./ARCHITECTURE.md) for detailed architecture diagrams and 
 
 ```bash
 git clone <repository-url>
-cd spike-ai
+cd querymind
 ```
 
 ### 2. Environment Configuration
@@ -209,7 +211,7 @@ curl -X POST http://localhost:8080/query \
 ## Project Structure
 
 ```
-spike-ai/
+querymind/
 ├── main.py                 # FastAPI application entry point
 ├── config.py              # Settings and configuration
 ├── models.py              # Pydantic models for API
@@ -250,13 +252,13 @@ python3 main.py --dev
 ### Stop Server
 
 ```bash
-kill $(cat spike_ai.pid)
+kill $(cat querymind.pid)
 ```
 
 ### View Logs
 
 ```bash
-tail -f spike_ai.log
+tail -f querymind.log
 ```
 
 ## API Reference
@@ -363,7 +365,7 @@ Set `LOG_LEVEL=DEBUG` in `.env` for detailed logging.
 For issues and questions:
 - Check [ARCHITECTURE.md](./ARCHITECTURE.md) for system details
 - Review [ASSUMPTIONS.md](./ASSUMPTIONS.md) for known limitations
-- Check logs: `tail -f spike_ai.log`
+- Check logs: `tail -f querymind.log`
 
 ---
 

@@ -2,7 +2,7 @@
 
 set -e
 
-echo "Deploying Spike AI..."
+echo "Deploying QueryMind..."
 
 if ! command -v python3 &> /dev/null; then
     echo "Error: python3 is not installed"
@@ -34,30 +34,30 @@ if lsof -ti:8080 > /dev/null 2>&1; then
 fi
 
 echo "Starting server..."
-nohup python3 main.py > spike_ai.log 2>&1 &
+nohup python3 main.py > querymind.log 2>&1 &
 
 SERVER_PID=$!
-echo $SERVER_PID > spike_ai.pid
+echo $SERVER_PID > querymind.pid
 
 sleep 3
 
 if ps -p $SERVER_PID > /dev/null; then
     echo ""
-    echo "Spike AI is running"
+    echo "QueryMind is running"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo "PID: $SERVER_PID"
     echo "API: http://localhost:8080"
     echo "Health: http://localhost:8080/health"
-    echo "Logs: tail -f spike_ai.log"
-    echo "Stop: kill \$(cat spike_ai.pid)"
+    echo "Logs: tail -f querymind.log"
+    echo "Stop: kill \$(cat querymind.pid)"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
     echo "Deployment complete. Following logs..."
     echo ""
-    tail -f spike_ai.log
+    tail -f querymind.log
 else
-    echo "Failed to start server. Check spike_ai.log:"
-    cat spike_ai.log
+    echo "Failed to start server. Check querymind.log:"
+    cat querymind.log
     exit 1
 fi
 

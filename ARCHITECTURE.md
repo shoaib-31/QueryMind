@@ -1,4 +1,4 @@
-# Spike AI - Architecture Documentation
+# QueryMind - Architecture Documentation
 
 ## System Overview
 

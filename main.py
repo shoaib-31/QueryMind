@@ -1,5 +1,5 @@
 """
-Spike AI - Analytics and SEO Query API
+QueryMind - Analytics and SEO Query API
 FastAPI application providing natural language querying for GA4 and SEO data.
 """
 
@@ -36,7 +36,7 @@ logging.getLogger("litellm").setLevel(logging.WARNING)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Startup and shutdown logic."""
-    logger.info("Starting Spike AI")
+    logger.info("Starting QueryMind")
     
     try:
         settings = get_settings()
@@ -60,7 +60,7 @@ async def lifespan(app: FastAPI):
 
 # Create FastAPI app
 app = FastAPI(
-    title="Spike AI",
+    title="QueryMind",
     description="Natural language query API for GA4 Analytics and SEO data",
     version="0.1.0",
     lifespan=lifespan

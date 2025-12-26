@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "86ad29ae-4f50-4fd7-b1c4-110d87ed86ae",
-		"name": "Spike-ai-hack",
+		"name": "QueryMind",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "47901721",
 		"_collection_link": "https://speeding-astronaut-288680.postman.co/workspace/Team-Workspace~1303bf94-cd9b-40bd-800c-ce2e008f6740/collection/47901721-86ad29ae-4f50-4fd7-b1c4-110d87ed86ae?action=share&source=collection_link&creator=47901721"
@@ -81,7 +81,7 @@
 			"response": []
 		},
 		{
-			"name": "spike-ai-hack",
+			"name": "querymind",
 			"request": {
 				"method": "POST",
 				"header": [],
